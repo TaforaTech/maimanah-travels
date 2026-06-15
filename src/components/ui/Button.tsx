@@ -1,19 +1,24 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline";
+type Variant = "primary" | "secondary" | "whatsapp" | "ghost" | "outline";
 type Size = "sm" | "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide transition-all duration-200 focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
+  // Primary CTA — gold, draws attention (Book Now, Apply, Get a Quote)
   primary:
-    "bg-gold-gradient text-navy-900 shadow-soft hover:shadow-luxury hover:-translate-y-0.5",
+    "bg-gold-500 text-white shadow-soft hover:bg-gold-700 hover:shadow-luxury hover:-translate-y-0.5",
+  // Secondary CTA — brand green, supportive (View Packages, Learn More)
   secondary:
-    "bg-navy-800 text-cream-50 hover:bg-navy-700 hover:-translate-y-0.5 shadow-soft",
+    "bg-navy-900 text-white hover:bg-navy-800 hover:-translate-y-0.5 shadow-soft",
+  // WhatsApp — standard recognizable green
+  whatsapp:
+    "bg-whatsapp text-white hover:bg-whatsapp-dark hover:-translate-y-0.5 shadow-soft",
   outline:
-    "border border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-navy-900",
+    "border border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white",
   ghost: "text-navy-800 hover:bg-navy-50",
 };
 

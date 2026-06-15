@@ -31,7 +31,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {h.ctaPrimary}
               <Icon name="arrow" className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href={site.whatsappHref} size="lg" variant="outline" className="border-white/30 text-cream-50 hover:bg-white/10 hover:text-cream-50">
+            <ButtonLink href={site.whatsappHref} size="lg" variant="whatsapp">
               <Icon name="whatsapp" className="h-4 w-4" />
               {h.ctaSecondary}
             </ButtonLink>

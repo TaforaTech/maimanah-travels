@@ -61,7 +61,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
               href={site.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-navy-800 px-6 py-3 text-sm font-semibold text-cream-50 transition-colors hover:bg-gold-gradient hover:text-navy-900"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
             >
               <Icon name="whatsapp" className="h-5 w-5" />
               {dict.common.whatsapp}

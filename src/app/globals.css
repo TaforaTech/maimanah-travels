@@ -19,11 +19,16 @@
   --color-navy-50: #eef6f2;
 
   /* Gold (Accent #D4AF37 · Light #E9C46A) */
+  --color-gold-700: #c19a2e; /* primary CTA hover */
   --color-gold-600: #b8962e;
   --color-gold-500: #d4af37;
   --color-gold-400: #e9c46a;
   --color-gold-300: #f0d690;
   --color-gold-100: #faf0d6;
+
+  /* WhatsApp (brand-recognizable green — special case) */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1ebe5d;
 
   /* Neutrals (Background #FAFAF8 · Text #1A1A1A / #FFFFFF) */
   --color-cream-50: #fafaf8;
