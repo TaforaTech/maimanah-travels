@@ -21,8 +21,8 @@ export function Logo({
       >
         <defs>
           <linearGradient id="maimanahGold" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#D9B968" />
-            <stop offset="1" stopColor="#A9842F" />
+            <stop offset="0" stopColor="#E9C46A" />
+            <stop offset="1" stopColor="#B8962E" />
           </linearGradient>
         </defs>
         <circle cx="24" cy="24" r="23" className="fill-navy-900" />
@@ -34,7 +34,7 @@ export function Logo({
         <circle cx="34.5" cy="16" r="1.6" fill="url(#maimanahGold)" />
       </svg>
       <span className="flex flex-col leading-none">
-        <span className={cn("font-display text-xl font-semibold tracking-wide", wordColor)}>
+        <span className={cn("font-display text-xl font-bold tracking-wide", wordColor)}>
           Maimanah Travels
         </span>
         <span className={cn("mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.42em]", subColor)}>

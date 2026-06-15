@@ -2,34 +2,35 @@
 
 /*
   Maimanah Travels — centralized design system
-  Palette: Navy Blue (trust, depth) + Luxury Gold (premium, hospitality)
+  Palette: Emerald Green (trust, serenity, Islamic heritage) + Luxury Gold (premium, hospitality)
   All colors/tokens defined once here and consumed via Tailwind utilities.
+  The `navy-*` scale carries the green family so existing utilities keep working.
 */
 
 @theme {
-  /* Navy */
-  --color-navy-950: #060f1f;
-  --color-navy-900: #0a1a33;
-  --color-navy-800: #10264d;
-  --color-navy-700: #1b3a6b;
-  --color-navy-600: #294f8c;
-  --color-navy-500: #3a64a8;
-  --color-navy-100: #dbe6f5;
-  --color-navy-50: #eef3fb;
+  /* Green (Primary #0F4C3A · Secondary #16624F) */
+  --color-navy-950: #06241b;
+  --color-navy-900: #0f4c3a;
+  --color-navy-800: #16624f;
+  --color-navy-700: #1e7a63;
+  --color-navy-600: #2a9178;
+  --color-navy-500: #3da98e;
+  --color-navy-100: #d5e8e1;
+  --color-navy-50: #eef6f2;
 
-  /* Gold */
-  --color-gold-600: #a9842f;
-  --color-gold-500: #c9a24b;
-  --color-gold-400: #d9b968;
-  --color-gold-300: #e7cf93;
-  --color-gold-100: #f6ecd2;
+  /* Gold (Accent #D4AF37 · Light #E9C46A) */
+  --color-gold-600: #b8962e;
+  --color-gold-500: #d4af37;
+  --color-gold-400: #e9c46a;
+  --color-gold-300: #f0d690;
+  --color-gold-100: #faf0d6;
 
-  /* Neutrals */
-  --color-cream-50: #faf7f0;
-  --color-cream-100: #f3ede1;
-  --color-ink: #14202e;
-  --color-muted: #5b6877;
-  --color-line: #e6e0d4;
+  /* Neutrals (Background #FAFAF8 · Text #1A1A1A / #FFFFFF) */
+  --color-cream-50: #fafaf8;
+  --color-cream-100: #f2f2ed;
+  --color-ink: #1a1a1a;
+  --color-muted: #5b5b57;
+  --color-line: #e6e3db;
 
   /* Fonts (bound to next/font CSS variables) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -38,15 +39,15 @@
 
   /* Radius & shadow */
   --radius-xl2: 1.25rem;
-  --shadow-luxury: 0 18px 50px -12px rgba(10, 26, 51, 0.25);
-  --shadow-soft: 0 8px 30px -10px rgba(10, 26, 51, 0.15);
+  --shadow-luxury: 0 18px 50px -12px rgba(15, 76, 58, 0.25);
+  --shadow-soft: 0 8px 30px -10px rgba(15, 76, 58, 0.15);
 
   /* Layout */
   --spacing-section: 5.5rem;
 }
 
 :root {
-  --background: #ffffff;
+  --background: #fafaf8;
   --foreground: var(--color-ink);
 }
 
@@ -117,14 +118,14 @@
 
   .bg-navy-gradient {
     background:
-      radial-gradient(120% 120% at 80% -10%, rgba(201, 162, 75, 0.18) 0%, transparent 45%),
+      radial-gradient(120% 120% at 80% -10%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
       linear-gradient(160deg, var(--color-navy-900) 0%, var(--color-navy-800) 60%, var(--color-navy-950) 100%);
   }
 
   /* Subtle Islamic-inspired geometric pattern (original, CSS-only) */
   .pattern-arabesque {
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(201, 162, 75, 0.16) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(212, 175, 55, 0.16) 1px, transparent 0);
     background-size: 22px 22px;
   }
 

@@ -16,8 +16,8 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #0A1A33 0%, #10264D 60%, #060F1F 100%)",
-          color: "#FAF7F0",
+          background: "linear-gradient(135deg, #0F4C3A 0%, #16624F 60%, #06241B 100%)",
+          color: "#FAFAF8",
           fontFamily: "sans-serif",
         }}
       >
@@ -27,25 +27,25 @@ export default function OgImage() {
               width: 72,
               height: 72,
               borderRadius: 18,
-              background: "linear-gradient(135deg, #D9B968, #A9842F)",
+              background: "linear-gradient(135deg, #E9C46A, #B8962E)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#0A1A33",
+              color: "#0F4C3A",
               fontSize: 40,
               fontWeight: 700,
             }}
           >
             M
           </div>
-          <div style={{ fontSize: 30, letterSpacing: 6, color: "#D9B968", textTransform: "uppercase" }}>
+          <div style={{ fontSize: 30, letterSpacing: 6, color: "#E9C46A", textTransform: "uppercase" }}>
             {site.name}
           </div>
         </div>
         <div style={{ marginTop: 40, fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 900 }}>
           Simplify Your Sacred Journey to the House of Allah
         </div>
-        <div style={{ marginTop: 28, fontSize: 30, color: "#DBE6F5" }}>
+        <div style={{ marginTop: 28, fontSize: 30, color: "#D5E8E1" }}>
           Premium Hajj &amp; Umrah · Visa · Ticketing
         </div>
       </div>
