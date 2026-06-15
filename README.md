@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maimanah Travels
 
-## Getting Started
+A premium, bilingual (English + Bangla) marketing website for a Hajj & Umrah travel agency, built with **Next.js 16 (App Router)**, **Tailwind CSS v4** and **TypeScript**. The information architecture mirrors a full-service pilgrimage agency; all code, UI, branding, copy and assets are original.
 
-First, run the development server:
+> Content (packages, prices, phone, address, photos, license) is **placeholder** — edit the typed data files to go live.
+
+## Tech stack
+
+- **Next.js 16** App Router, static rendering, Turbopack
+- **Tailwind CSS v4** with a centralized Navy + Gold design system (`src/app/globals.css`)
+- **TypeScript**, ESLint
+- **next/font** (Inter, Cormorant Garamond, Noto Sans Bengali)
+- **MDX** blog (`@next/mdx`)
+- **Zod** + React Server Actions for forms
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000  (→ /en)
+npm run build    # production build
+npm run start    # serve the build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Internationalization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Locales: `en` (default) and `bn`. Root `/` redirects to `/en` via `src/proxy.ts`.
+- Routes live under `src/app/[lang]/…`; the active locale sets `<html lang>` and switches the Bangla font.
+- UI strings: `src/content/i18n/{en,bn}.ts` (typed, `en` is the source of truth).
+- The `LanguageSwitcher` preserves the current path when switching locales.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where the content lives
 
-## Learn More
+| Content | File |
+|---|---|
+| Business details (brand, phone, address, socials) | `src/content/data/site.ts` |
+| Hajj/Umrah packages | `src/content/data/packages.ts` |
+| Services | `src/content/data/services.ts` |
+| FAQ / Testimonials / Gallery | `src/content/data/{faq,testimonials,gallery}.ts` |
+| Informational pages (visa, significance, about, etc.) | `src/content/data/pages.ts` |
+| Navigation (header/footer) | `src/content/data/navigation.ts` |
+| Blog posts | `src/content/blog/*.mdx` + `posts.ts` |
+| UI translations | `src/content/i18n/{en,bn}.ts` |
 
-To learn more about Next.js, take a look at the following resources:
+## Forms & email
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contact and booking forms use a Server Action (`src/lib/actions.ts`) with Zod validation. Submissions are sent through a pluggable email hook (`src/lib/email.ts`):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Set `RESEND_API_KEY` (and optionally `LEAD_INBOX`, `LEAD_FROM`) to send real emails via Resend.
+- Without a key, leads are logged to the server console so the form works in development.
 
-## Deploy on Vercel
+## SEO
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Per-page metadata with canonical + `hreflang` alternates and Open Graph (`src/lib/seo.tsx`).
+- JSON-LD: `TravelAgency`, `BreadcrumbList`, `FAQPage`, `Article`.
+- `sitemap.xml`, `robots.txt`, generated OG image (`opengraph-image.tsx`) and SVG favicon (`icon.svg`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+```
+src/
+  app/[lang]/        # localized routes (home, hajj, umrah, services, blog, …)
+  components/        # layout/, ui/, sections/, forms/
+  content/           # data/, i18n/, blog/
+  lib/               # i18n, seo, actions, email, validation, utils
+  proxy.ts           # locale routing
+```

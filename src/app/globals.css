@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
+/*
+  Maimanah Travels — centralized design system
+  Palette: Navy Blue (trust, depth) + Luxury Gold (premium, hospitality)
+  All colors/tokens defined once here and consumed via Tailwind utilities.
+*/
+
+@theme {
+  /* Navy */
+  --color-navy-950: #060f1f;
+  --color-navy-900: #0a1a33;
+  --color-navy-800: #10264d;
+  --color-navy-700: #1b3a6b;
+  --color-navy-600: #294f8c;
+  --color-navy-500: #3a64a8;
+  --color-navy-100: #dbe6f5;
+  --color-navy-50: #eef3fb;
+
+  /* Gold */
+  --color-gold-600: #a9842f;
+  --color-gold-500: #c9a24b;
+  --color-gold-400: #d9b968;
+  --color-gold-300: #e7cf93;
+  --color-gold-100: #f6ecd2;
+
+  /* Neutrals */
+  --color-cream-50: #faf7f0;
+  --color-cream-100: #f3ede1;
+  --color-ink: #14202e;
+  --color-muted: #5b6877;
+  --color-line: #e6e0d4;
+
+  /* Fonts (bound to next/font CSS variables) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-bangla: var(--font-bangla), var(--font-inter), sans-serif;
+
+  /* Radius & shadow */
+  --radius-xl2: 1.25rem;
+  --shadow-luxury: 0 18px 50px -12px rgba(10, 26, 51, 0.25);
+  --shadow-soft: 0 8px 30px -10px rgba(10, 26, 51, 0.15);
+
+  /* Layout */
+  --spacing-section: 5.5rem;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Bangla locale switches the body font for crisp Bengali rendering */
+  html[lang="bn"] body {
+    font-family: var(--font-bangla);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy-900);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  html[lang="bn"] h1,
+  html[lang="bn"] h2,
+  html[lang="bn"] h3,
+  html[lang="bn"] h4 {
+    font-family: var(--font-bangla);
+    letter-spacing: 0;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-gold-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-navy-900);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Premium gold gradient text/fills used for accents */
+  .text-gold-gradient {
+    background: linear-gradient(100deg, var(--color-gold-400), var(--color-gold-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(100deg, var(--color-gold-500), var(--color-gold-600));
+  }
+
+  .bg-navy-gradient {
+    background:
+      radial-gradient(120% 120% at 80% -10%, rgba(201, 162, 75, 0.18) 0%, transparent 45%),
+      linear-gradient(160deg, var(--color-navy-900) 0%, var(--color-navy-800) 60%, var(--color-navy-950) 100%);
+  }
+
+  /* Subtle Islamic-inspired geometric pattern (original, CSS-only) */
+  .pattern-arabesque {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(201, 162, 75, 0.16) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  .container-px {
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-px {
+      padding-inline: 2rem;
+    }
+  }
+}
+
+@layer utilities {
+  /*
+    Scroll-reveal animation (paired with components/ui/Reveal).
+    Gated behind html.js so content is always visible when JS is unavailable
+    (no-JS users, crawlers) — progressive enhancement, no permanent hiding.
+  */
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
