@@ -22,7 +22,7 @@ export function ServiceGrid({ locale, dict }: { locale: Locale; dict: Dictionary
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition-colors group-hover:bg-gold-gradient group-hover:text-navy-900">
                 <Icon name={service.icon as IconName} className="h-7 w-7" />
               </span>
-              <h3 className="mt-6 text-xl font-semibold text-navy-900">
+              <h3 className="mt-6 text-2xl font-bold text-navy-900">
                 {service.title[locale]}
               </h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">

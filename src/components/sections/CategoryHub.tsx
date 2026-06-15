@@ -59,7 +59,7 @@ export function CategoryHub({
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy-50 text-gold-600 group-hover:bg-gold-gradient group-hover:text-navy-900">
                     <Icon name={page?.icon ?? "check"} className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-5 text-lg font-semibold text-navy-900">{dict.nav[link.labelKey]}</h3>
+                  <h3 className="mt-5 text-xl font-bold text-navy-900">{dict.nav[link.labelKey]}</h3>
                   {page && <p className="mt-2 flex-1 text-sm text-muted">{page.subtitle[locale]}</p>}
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold-600">
                     {dict.common.learnMore}

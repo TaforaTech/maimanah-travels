@@ -19,7 +19,7 @@ export function WhyChoose({ dict }: { locale?: Locale; dict: Dictionary }) {
                 <Icon name={icons[i % icons.length]} className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="text-lg font-semibold text-navy-900">{item.title}</h3>
+                <h3 className="text-xl font-bold text-navy-900">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
               </div>
             </div>

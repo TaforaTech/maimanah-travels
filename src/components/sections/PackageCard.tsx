@@ -36,7 +36,7 @@ export function PackageCard({
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-semibold text-navy-900">{pkg.name[locale]}</h3>
+        <h3 className="text-xl font-bold text-navy-900">{pkg.name[locale]}</h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{pkg.summary[locale]}</p>
 
         <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted">
