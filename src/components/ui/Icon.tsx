@@ -16,6 +16,10 @@ export type IconName =
   | "arrow"
   | "chevron"
   | "shield"
+  | "bed"
+  | "building"
+  | "food"
+  | "bus"
   | "facebook"
   | "instagram"
   | "youtube"
@@ -83,6 +87,35 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z" />
       <path d="m9 12 2 2 4-4" />
+    </>
+  ),
+  bed: (
+    <>
+      <path d="M2 19v-6a2 2 0 0 1 2-2h12a4 4 0 0 1 4 4v4" />
+      <path d="M2 14h20" />
+      <path d="M6 11V9a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2" />
+    </>
+  ),
+  building: (
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="1" />
+      <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" />
+      <path d="M3 21h18" />
+    </>
+  ),
+  food: (
+    <>
+      <path d="M3 18h18" />
+      <path d="M4 18a8 8 0 0 1 16 0" />
+      <path d="M9 6h6" />
+      <path d="M12 6v4" />
+    </>
+  ),
+  bus: (
+    <>
+      <rect x="4" y="4" width="16" height="12" rx="2" />
+      <path d="M4 11h16M8 8h8" />
+      <path d="M7 16v2M17 16v2" />
     </>
   ),
   facebook: <path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V8.5c0-.3.2-.5.5-.5Z" />,

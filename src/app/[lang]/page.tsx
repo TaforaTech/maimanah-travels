@@ -10,6 +10,7 @@ import { PackageGrid } from "@/components/sections/PackageGrid";
 import { SectionHeading } from "@/components/ui/Section";
 import { PartnersStrip } from "@/components/sections/PartnersStrip";
 import { WhyChoose } from "@/components/sections/WhyChoose";
+import { Hajj2027Packages } from "@/components/sections/Hajj2027Packages";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CTASection } from "@/components/sections/CTASection";
 import { ButtonLink } from "@/components/ui/Button";
@@ -47,6 +48,10 @@ export default async function HomePage({
       <JsonLd data={organizationJsonLd()} />
       <Hero locale={locale} dict={dict} />
 
+      <Section tone="light">
+        <Hajj2027Packages locale={locale} showButton />
+      </Section>
+
       <Section tone="cream">
         <ServiceGrid locale={locale} dict={dict} />
       </Section>
@@ -73,14 +78,6 @@ export default async function HomePage({
           </ButtonLink>
         </div>
       </Section>
-
-      <CTASection
-        locale={locale}
-        title={dict.home.hajjCta.title}
-        description={dict.home.hajjCta.description}
-        primaryHref={localePath("/hajj/pre-registration", locale)}
-        primaryLabel={dict.home.hajjCta.cta}
-      />
 
       <Section tone="light">
         <WhyChoose locale={locale} dict={dict} />
