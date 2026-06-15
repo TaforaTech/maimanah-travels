@@ -6,11 +6,11 @@ import type { Dictionary } from "@/content/i18n/en";
 
 const icons: IconName[] = ["book", "mosque", "check", "phone", "passport", "shield"];
 
-export function WhyChoose({ dict }: { locale?: Locale; dict: Dictionary }) {
+export function WhyChoose({ locale, dict }: { locale?: Locale; dict: Dictionary }) {
   const w = dict.home.why;
   return (
     <div>
-      <SectionHeading eyebrow={w.eyebrow} title={w.title} description={w.description} align="left" className="max-w-3xl" />
+      <SectionHeading eyebrow={w.eyebrow} title={w.title} description={w.description} align="center" className="max-w-3xl" />
       <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {dict.why.items.map((item, i) => (
           <Reveal key={item.title} delay={i * 50}>
@@ -19,7 +19,7 @@ export function WhyChoose({ dict }: { locale?: Locale; dict: Dictionary }) {
                 <Icon name={icons[i % icons.length]} className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="text-xl font-bold text-navy-900">{item.title}</h3>
+                <h3 className={`text-2xl text-navy-900 ${locale === "bn" ? "font-semibold" : "font-bold"}`}>{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
               </div>
             </div>

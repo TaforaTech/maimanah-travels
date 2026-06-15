@@ -25,7 +25,7 @@ export function PartnersStrip({ locale, dict }: { locale: Locale; dict: Dictiona
             <span className="grid h-11 w-11 place-items-center rounded-xl bg-navy-50 text-gold-600">
               <Icon name={a.icon} className="h-6 w-6" />
             </span>
-            <span className="text-sm font-semibold text-navy-900">{a.label[locale]}</span>
+            <span className={`text-sm text-navy-900 ${locale === "bn" ? "font-semibold" : "font-display font-bold"}`}>{a.label[locale]}</span>
           </li>
         ))}
       </ul>
