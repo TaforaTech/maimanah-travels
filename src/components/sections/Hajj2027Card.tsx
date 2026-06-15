@@ -20,7 +20,7 @@ export function Hajj2027Card({
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col rounded-[--radius-xl2] p-7 shadow-soft transition-all duration-300",
+        "relative flex h-full flex-col rounded-xl2 p-7 shadow-soft transition-all duration-300",
         featured
           ? "bg-navy-gradient text-cream-50 ring-1 ring-gold-400/40 lg:-translate-y-4 lg:shadow-luxury"
           : "border border-line bg-white text-ink hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury",

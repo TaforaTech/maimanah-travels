@@ -48,7 +48,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
             <Reveal key={post.slug} delay={(i % 3) * 60}>
               <Link
                 href={localePath(`/blog/${post.slug}`, locale)}
-                className="group flex h-full flex-col overflow-hidden rounded-[--radius-xl2] border border-line bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-luxury"
+                className="group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-luxury"
               >
                 <div className={`relative aspect-[16/10] bg-gradient-to-br ${post.gradient}`}>
                   <div className="pattern-arabesque absolute inset-0 opacity-40" aria-hidden />

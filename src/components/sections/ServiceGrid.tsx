@@ -17,7 +17,7 @@ export function ServiceGrid({ locale, dict }: { locale: Locale; dict: Dictionary
           <Reveal key={service.slug} delay={i * 60}>
             <Link
               href={localePath(service.href, locale)}
-              className="group flex h-full flex-col rounded-[--radius-xl2] border border-line bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury"
+              className="group flex h-full flex-col rounded-xl2 border border-line bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury"
             >
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy-50 text-navy-700 transition-colors group-hover:bg-gold-gradient group-hover:text-navy-900">
                 <Icon name={service.icon as IconName} className="h-7 w-7" />

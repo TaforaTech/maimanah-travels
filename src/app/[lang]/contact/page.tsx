@@ -70,7 +70,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
 
           {/* Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-[--radius-xl2] border border-line bg-cream-50 p-6 shadow-soft md:p-8">
+            <div className="rounded-xl2 border border-line bg-cream-50 p-6 shadow-soft md:p-8">
               <h2 className="text-2xl font-semibold text-navy-900">{dict.forms.contact.title}</h2>
               <p className="mt-2 text-sm text-muted">{dict.forms.contact.description}</p>
               <div className="mt-6">

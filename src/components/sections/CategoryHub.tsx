@@ -54,7 +54,7 @@ export function CategoryHub({
               <Reveal key={link.href} delay={i * 50}>
                 <Link
                   href={localePath(link.href, locale)}
-                  className="group flex h-full flex-col rounded-[--radius-xl2] border border-line bg-white p-7 shadow-soft transition-all hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury"
+                  className="group flex h-full flex-col rounded-xl2 border border-line bg-white p-7 shadow-soft transition-all hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury"
                 >
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy-50 text-gold-600 group-hover:bg-gold-gradient group-hover:text-navy-900">
                     <Icon name={page?.icon ?? "check"} className="h-6 w-6" />

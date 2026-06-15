@@ -22,7 +22,7 @@ export function Testimonials({
       <div className="mt-14 grid gap-6 md:grid-cols-2">
         {items.map((item, i) => (
           <Reveal key={item.name} delay={i * 60}>
-            <figure className="flex h-full flex-col rounded-[--radius-xl2] border border-white/10 bg-white/[0.04] p-8 backdrop-blur">
+            <figure className="flex h-full flex-col rounded-xl2 border border-white/10 bg-white/[0.04] p-8 backdrop-blur">
               <div className="flex items-center gap-1" aria-label={`${item.rating} out of 5`}>
                 {Array.from({ length: item.rating }).map((_, s) => (
                   <Icon key={s} name="star" className="h-5 w-5 text-gold-400" strokeWidth={0} />

@@ -20,6 +20,7 @@ export type IconName =
   | "building"
   | "food"
   | "bus"
+  | "download"
   | "facebook"
   | "instagram"
   | "youtube"
@@ -116,6 +117,13 @@ const paths: Record<IconName, React.ReactNode> = {
       <rect x="4" y="4" width="16" height="12" rx="2" />
       <path d="M4 11h16M8 8h8" />
       <path d="M7 16v2M17 16v2" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M12 3v12" />
+      <path d="m7 11 5 5 5-5" />
+      <path d="M5 21h14" />
     </>
   ),
   facebook: <path d="M14 8h2V5h-2a3 3 0 0 0-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V8.5c0-.3.2-.5.5-.5Z" />,

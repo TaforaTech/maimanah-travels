@@ -22,7 +22,7 @@ export function Hajj2027Packages({
       {showHeading && (
         <SectionHeading eyebrow={c.eyebrow[locale]} title={c.title[locale]} description={c.description[locale]} />
       )}
-      <div className="mt-14 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {hajj2027Packages.map((pkg, i) => (
           <Reveal key={pkg.slug} delay={i * 60}>
             <Hajj2027Card pkg={pkg} locale={locale} />

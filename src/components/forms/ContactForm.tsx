@@ -32,7 +32,7 @@ export function ContactForm({
 
   if (state.status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-[--radius-xl2] border border-gold-300 bg-gold-100/50 p-10 text-center">
+      <div className="flex flex-col items-center gap-4 rounded-xl2 border border-gold-300 bg-gold-100/50 p-10 text-center">
         <span className="grid h-14 w-14 place-items-center rounded-full bg-gold-gradient text-navy-900">
           <Icon name="check" className="h-7 w-7" strokeWidth={2.4} />
         </span>

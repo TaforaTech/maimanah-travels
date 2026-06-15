@@ -18,7 +18,7 @@ export function PackageCard({
 }) {
   const href = localePath(`/${pkg.category}/packages/${pkg.slug}`, locale);
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[--radius-xl2] border border-line bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury">
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury">
       {/* Original gradient artwork instead of a copyrighted photo */}
       <div className="relative aspect-[16/10] overflow-hidden bg-navy-gradient">
         <div className="pattern-arabesque absolute inset-0 opacity-50" aria-hidden />
