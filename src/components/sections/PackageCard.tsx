@@ -89,7 +89,7 @@ export function PackageCard({
       </ul>
 
       {/* CTA */}
-      <ButtonLink href={href} variant="primary" className="mt-7 w-full">
+      <ButtonLink href={href} variant={featured ? "primary" : "secondary"} className="mt-7 w-full">
         {dict.common.viewDetails}
         <Icon name="arrow" className="h-4 w-4" />
       </ButtonLink>

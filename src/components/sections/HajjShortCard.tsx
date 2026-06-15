@@ -52,7 +52,7 @@ export function HajjShortCard({
 
       {/* Actions */}
       <div className="mt-7">
-        <ButtonLink href={site.phoneHref} variant="primary" className="w-full">
+        <ButtonLink href={site.phoneHref} variant="secondary" className="w-full">
           <Icon name="phone" className="h-4 w-4" />
           {s.callNow[locale]}
         </ButtonLink>

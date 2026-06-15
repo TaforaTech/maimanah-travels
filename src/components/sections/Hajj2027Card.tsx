@@ -89,7 +89,7 @@ export function Hajj2027Card({
       {/* CTA */}
       <ButtonLink
         href={localePath("/contact", locale)}
-        variant="primary"
+        variant={featured ? "primary" : "secondary"}
         className="mt-7 w-full"
       >
         {c.selectPackage[locale]}
