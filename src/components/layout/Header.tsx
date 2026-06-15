@@ -53,6 +53,7 @@ export function Header({
   const label = (key: string) => dict.nav[key as keyof NavDict] ?? key;
 
   return (
+    <>
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
@@ -61,7 +62,7 @@ export function Header({
           : "bg-white/80 backdrop-blur-sm",
       )}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between container-px">
+      <div className="mx-auto flex h-20 max-w-[120rem] items-center justify-between container-px">
         <Link href={localePath("/", locale)} aria-label={dict.common.home}>
           <Logo />
         </Link>
@@ -133,15 +134,22 @@ export function Header({
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer (rendered outside <header> so its fixed positioning resolves against the viewport, not the backdrop-blur header) */}
       <div
         className={cn(
-          "lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto border-t border-line bg-white transition-transform duration-300",
-          mobileOpen ? "translate-x-0" : "translate-x-full",
+          "lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-hidden",
+          mobileOpen ? "pointer-events-auto" : "pointer-events-none",
         )}
         aria-hidden={!mobileOpen}
       >
+        <div
+          className={cn(
+            "h-full w-full overflow-y-auto border-t border-line bg-white transition-transform duration-300",
+            mobileOpen ? "translate-x-0" : "translate-x-full",
+          )}
+        >
         <nav className="container-px py-6" aria-label="Mobile">
           <ul className="space-y-1">
             {mainNav.map((group) => {
@@ -189,7 +197,8 @@ export function Header({
             </ButtonLink>
           </div>
         </nav>
+        </div>
       </div>
-    </header>
+    </>
   );
 }

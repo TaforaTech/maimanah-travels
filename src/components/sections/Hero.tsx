@@ -14,7 +14,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" aria-hidden />
       <div className="absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-navy-500/20 blur-3xl" aria-hidden />
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 container-px py-12 lg:h-full lg:grid-cols-12 lg:gap-12 lg:py-0">
+      <div className="relative mx-auto grid w-full max-w-[120rem] items-center gap-10 container-px py-12 lg:h-full lg:grid-cols-12 lg:gap-12 lg:py-0">
         <div className="lg:col-span-7">
           <Badge tone="soft">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-400" aria-hidden />
@@ -50,8 +50,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         {/* Looping hero video with overlaid card content */}
-        <div className="relative hidden lg:col-span-5 lg:block lg:self-stretch">
-          <div className="absolute left-0 right-0 top-1/2 h-[85%] -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/15 shadow-luxury">
+        <div className="relative lg:col-span-5 lg:self-stretch">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/15 shadow-luxury sm:aspect-[16/10] lg:absolute lg:left-0 lg:right-0 lg:top-1/2 lg:aspect-auto lg:h-[85%] lg:-translate-y-1/2">
             <video
               className="absolute inset-0 h-full w-full object-cover"
               src="/assets/running%20vedion_on_loop.mp4"

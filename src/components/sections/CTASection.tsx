@@ -18,7 +18,7 @@ export function CTASection({
 }) {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl container-px py-4">
+      <div className="mx-auto max-w-[120rem] container-px py-4">
         <div className="relative overflow-hidden rounded-[2rem] bg-navy-gradient px-8 py-14 text-center shadow-luxury md:px-16 md:py-20">
           <div className="pattern-arabesque absolute inset-0 opacity-50" aria-hidden />
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold-500/15 blur-3xl" aria-hidden />

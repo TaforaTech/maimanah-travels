@@ -10,7 +10,7 @@ const messages: Record<Locale, string> = {
 export function AnnouncementBar({ locale }: { locale: Locale }) {
   return (
     <div className="bg-navy-900 text-cream-50">
-      <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-4 container-px text-xs">
+      <div className="mx-auto flex h-10 max-w-[120rem] items-center justify-between gap-4 container-px text-xs">
         <p className="flex items-center gap-2 truncate">
           <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-gold-400" aria-hidden />
           <span className="truncate text-navy-100">{messages[locale]}</span>

@@ -17,7 +17,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <footer className="bg-navy-gradient text-cream-50">
-      <div className="mx-auto max-w-7xl container-px py-16">
+      <div className="mx-auto max-w-[120rem] container-px py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-4">

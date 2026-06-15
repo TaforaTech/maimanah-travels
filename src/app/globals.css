@@ -134,14 +134,10 @@
     background-size: 22px 22px;
   }
 
+  /* Fluid side gutters (nsave-style): grow with viewport (~5.5vw),
+     clamped so they stay sane on small phones and ultra-wide screens. */
   .container-px {
-    padding-inline: 1.25rem;
-  }
-
-  @media (min-width: 768px) {
-    .container-px {
-      padding-inline: 2rem;
-    }
+    padding-inline: clamp(1.25rem, 5.5vw, 8rem);
   }
 }
 

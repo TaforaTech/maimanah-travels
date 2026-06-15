@@ -16,7 +16,7 @@ export function PageHero({
     <section className="relative overflow-hidden bg-navy-gradient text-cream-50">
       <div className="pattern-arabesque absolute inset-0 opacity-50" aria-hidden />
       <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold-500/10 blur-3xl" aria-hidden />
-      <div className="relative mx-auto max-w-7xl container-px py-16 md:py-20">
+      <div className="relative mx-auto max-w-[120rem] container-px py-16 md:py-20">
         <Breadcrumbs items={crumbs} />
         <div className="mt-6 flex items-start gap-5">
           {icon && (
