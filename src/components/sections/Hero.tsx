@@ -31,8 +31,14 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {h.ctaPrimary}
               <Icon name="arrow" className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href={site.whatsappHref} size="lg" variant="whatsapp">
-              <Icon name="whatsapp" className="h-4 w-4" />
+            <ButtonLink
+              href={site.whatsappHref}
+              size="lg"
+              variant="outline"
+              className="border-white/30 text-cream-50 hover:bg-white/10 hover:text-cream-50"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/icons8-whatsapp.svg" alt="" className="h-6 w-6" />
               {h.ctaSecondary}
             </ButtonLink>
           </div>
