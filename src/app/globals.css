@@ -56,6 +56,16 @@
   --foreground: var(--color-ink);
 }
 
+/* Premium green gradient for secondary buttons — lighter at rest, darker on hover.
+   Defined as @utility so variants (hover:) are generated in Tailwind v4. */
+@utility bg-green-gradient {
+  background: linear-gradient(110deg, var(--color-navy-700) 0%, var(--color-navy-900) 100%);
+}
+
+@utility bg-green-gradient-dark {
+  background: linear-gradient(110deg, var(--color-navy-900) 0%, var(--color-navy-950) 100%);
+}
+
 @layer base {
   * {
     border-color: var(--color-line);
