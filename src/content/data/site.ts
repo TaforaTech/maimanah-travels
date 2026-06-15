@@ -14,8 +14,8 @@ export const site = {
   whatsappHref: "https://wa.me/8801700000000",
   hotlineHours: "Sat–Thu, 9:00 AM – 8:00 PM",
   address: {
-    line1: "Level 5, Baitul Mukarram Avenue",
-    line2: "Paltan, Dhaka 1000, Bangladesh",
+    line1: "House No. 1121, Road No. 11, Avenue 8/A",
+    line2: "Mirpur DOHS, Dhaka 1216, Bangladesh",
   },
   license: "Hajj License No. 0000 (placeholder) · IATA Accredited",
   socials: [

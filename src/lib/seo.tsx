@@ -55,7 +55,8 @@ export function organizationJsonLd(): Json {
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.line1,
-      addressLocality: "Dhaka",
+      addressLocality: "Mirpur DOHS, Dhaka",
+      postalCode: "1216",
       addressCountry: "BD",
     },
     sameAs: site.socials.map((s) => s.href),
