@@ -1,11 +1,13 @@
-import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
-import { Badge } from "@/components/ui/Badge";
-import { formatBDT, cn } from "@/lib/utils";
+import { ButtonLink } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 import { localePath } from "@/lib/i18n";
+import { hajj2027Copy } from "@/content/data/hajj2027";
 import type { TravelPackage } from "@/content/data/packages";
 import type { Locale } from "@/content/i18n/config";
 import type { Dictionary } from "@/content/i18n/en";
+
+const groupBDT = (amount: number) => new Intl.NumberFormat("en-IN").format(amount);
 
 export function PackageCard({
   pkg,
@@ -17,56 +19,80 @@ export function PackageCard({
   dict: Dictionary;
 }) {
   const href = localePath(`/${pkg.category}/packages/${pkg.slug}`, locale);
+  const featured = !!pkg.highlight;
+  const c = hajj2027Copy;
+  const titleWeight = locale === "bn" ? "font-semibold" : "font-bold";
+  const specs = pkg.specs ?? [];
+
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-luxury">
-      {/* Original gradient artwork instead of a copyrighted photo */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-navy-gradient">
-        <div className="pattern-arabesque absolute inset-0 opacity-50" aria-hidden />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Icon name={pkg.category === "hajj" ? "kaaba" : "mosque"} className="h-16 w-16 text-gold-400/80" strokeWidth={1} />
-        </div>
-        <div className="absolute left-4 top-4">
-          <Badge tone="soft">{pkg.tier[locale]}</Badge>
-        </div>
-        <div className="absolute bottom-4 right-4 flex items-center gap-1" aria-label={`${pkg.hotelStars} star`}>
-          {Array.from({ length: pkg.hotelStars }).map((_, i) => (
-            <Icon key={i} name="star" className="h-4 w-4 text-gold-400" strokeWidth={0} />
-          ))}
+    <div
+      className={cn(
+        "relative flex h-full flex-col rounded-xl2 p-7 shadow-soft transition-all duration-300",
+        featured
+          ? "bg-navy-gradient text-cream-50 ring-1 ring-gold-400/40 lg:-translate-y-4 lg:shadow-luxury"
+          : "border border-line bg-white text-ink hover:-translate-y-1 hover:border-gold-300 hover:shadow-luxury",
+      )}
+    >
+      {featured && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-gradient px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-navy-900 shadow-soft">
+          {pkg.tier[locale]}
+        </span>
+      )}
+
+      {/* Header */}
+      <div className="flex items-center gap-3">
+        <span
+          className={cn(
+            "grid h-12 w-12 shrink-0 place-items-center rounded-xl",
+            featured ? "bg-white/10 text-gold-400" : "bg-gold-100 text-gold-600",
+          )}
+        >
+          <Icon name="mosque" className="h-6 w-6" />
+        </span>
+        <h3 className={cn("text-2xl", titleWeight, featured ? "text-cream-50" : "text-navy-900")}>
+          {pkg.name[locale]}
+        </h3>
+      </div>
+      <p className={cn("mt-3 text-sm leading-relaxed", featured ? "text-navy-100" : "text-muted")}>
+        {pkg.summary[locale]}
+      </p>
+
+      {/* Price */}
+      <div className={cn("mt-6 border-t pt-5", featured ? "border-white/15" : "border-line")}>
+        <span className={cn("text-xs font-semibold uppercase tracking-wider", featured ? "text-navy-100" : "text-muted")}>
+          BDT
+        </span>
+        <div className="flex items-end gap-2">
+          <span className={cn("text-4xl font-bold leading-none", featured ? "text-gold-400" : "text-navy-900")}>
+            {groupBDT(pkg.price)}
+          </span>
+          <span className={cn("pb-1 text-xs", featured ? "text-navy-100" : "text-muted")}>
+            {c.startsFrom[locale]}
+          </span>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className={`text-2xl text-navy-900 ${locale === "bn" ? "font-semibold" : "font-bold"}`}>{pkg.name[locale]}</h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{pkg.summary[locale]}</p>
-
-        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted">
-          <li className="inline-flex items-center gap-1.5">
-            <Icon name="clock" className="h-4 w-4 text-gold-600" />
-            {pkg.durationDays} {dict.common.days}
+      {/* Specs */}
+      <ul className="mt-6 flex-1 space-y-3.5">
+        {specs.map((spec) => (
+          <li key={spec.key} className="flex items-center gap-3 text-sm">
+            <Icon
+              name={spec.icon}
+              className={cn("h-5 w-5 shrink-0", featured ? "text-gold-400" : "text-gold-600")}
+              strokeWidth={1.8}
+            />
+            <span className={featured ? "text-cream-50" : "text-navy-800"}>
+              <span className="font-semibold">{c.rowLabels[spec.key][locale]}:</span> {spec.value[locale]}
+            </span>
           </li>
-          <li className="inline-flex items-center gap-1.5">
-            <Icon name="pin" className="h-4 w-4 text-gold-600" />
-            Makkah {pkg.nights.makkah}N · Madinah {pkg.nights.madinah}N
-          </li>
-        </ul>
+        ))}
+      </ul>
 
-        <div className="mt-5 flex items-end justify-between border-t border-line pt-5">
-          <div>
-            <p className="text-xs text-muted">{dict.common.from}</p>
-            <p className="text-xl font-semibold text-navy-900">{formatBDT(pkg.price)}</p>
-            <p className="text-[0.7rem] text-muted">{dict.common.perPerson}</p>
-          </div>
-          <Link
-            href={href}
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full bg-navy-800 px-4 py-2.5 text-sm font-semibold text-cream-50 transition-colors hover:bg-gold-gradient hover:text-navy-900",
-            )}
-          >
-            {dict.common.viewDetails}
-            <Icon name="arrow" className="h-4 w-4" />
-          </Link>
-        </div>
-      </div>
-    </article>
+      {/* CTA */}
+      <ButtonLink href={href} variant="primary" className="mt-7 w-full">
+        {dict.common.viewDetails}
+        <Icon name="arrow" className="h-4 w-4" />
+      </ButtonLink>
+    </div>
   );
 }

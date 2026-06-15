@@ -1,8 +1,15 @@
 import type { Locale } from "@/content/i18n/config";
+import type { IconName } from "@/components/ui/Icon";
 
 export type PackageCategory = "umrah" | "hajj";
 
 export type LocalizedText = Record<Locale, string>;
+
+export type PackageSpec = {
+  key: "duration" | "flight" | "aziziyah" | "makkah" | "madinah" | "food" | "services";
+  icon: IconName;
+  value: LocalizedText;
+};
 
 export type TravelPackage = {
   slug: string;
@@ -14,6 +21,10 @@ export type TravelPackage = {
   nights: { makkah: number; madinah: number };
   hotelStars: number;
   featured: boolean;
+  /** Highlights the card with the dark "Most Popular" treatment. */
+  highlight?: boolean;
+  /** Spec rows shown on the package card (duration, flight, hotels, food, services). */
+  specs?: PackageSpec[];
   summary: LocalizedText;
   highlights: LocalizedText[];
   includes: LocalizedText[];
@@ -34,6 +45,14 @@ export const packages: TravelPackage[] = [
     nights: { makkah: 6, madinah: 5 },
     hotelStars: 3,
     featured: true,
+    specs: [
+      { key: "duration", icon: "clock", value: t("12/13 Days", "১২/১৩ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia / US-Bangla", "সৌদিয়া / ইউএস-বাংলা") },
+      { key: "makkah", icon: "building", value: t("700/1000M", "৭০০/১০০০ মি.") },
+      { key: "madinah", icon: "building", value: t("700/900M", "৭০০/৯০০ মি.") },
+      { key: "food", icon: "food", value: t("Breakfast & Dinner", "সকাল ও রাতের খাবার") },
+      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+    ],
     summary: t(
       "A comfortable, affordable Umrah with clean 3-star stays and guided rituals — ideal for first-time pilgrims.",
       "পরিষ্কার ৩-তারকা আবাসন ও পরিচালিত ইবাদত সহ আরামদায়ক, সাশ্রয়ী উমরাহ—প্রথমবারের হাজীদের জন্য আদর্শ।",
@@ -73,6 +92,15 @@ export const packages: TravelPackage[] = [
     nights: { makkah: 7, madinah: 6 },
     hotelStars: 4,
     featured: true,
+    highlight: true,
+    specs: [
+      { key: "duration", icon: "clock", value: t("14/15 Days", "১৪/১৫ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia / Biman", "সৌদিয়া / বিমান") },
+      { key: "makkah", icon: "building", value: t("300/500M", "৩০০/৫০০ মি.") },
+      { key: "madinah", icon: "building", value: t("300/400M", "৩০০/৪০০ মি.") },
+      { key: "food", icon: "food", value: t("Breakfast, Lunch & Dinner", "সকাল, দুপুর ও রাতের খাবার") },
+      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+    ],
     summary: t(
       "Premium 4-star stays close to the Haram with attentive service and a relaxed pace of worship.",
       "হারামের নিকটে ৪-তারকা আবাসন, যত্নশীল সেবা ও স্বাচ্ছন্দ্যে ইবাদতের সুযোগ।",
@@ -112,6 +140,14 @@ export const packages: TravelPackage[] = [
     nights: { makkah: 7, madinah: 6 },
     hotelStars: 5,
     featured: true,
+    specs: [
+      { key: "duration", icon: "clock", value: t("14/15 Days", "১৪/১৫ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia (Business)", "সৌদিয়া (বিজনেস)") },
+      { key: "makkah", icon: "building", value: t("00/200M", "০০/২০০ মি.") },
+      { key: "madinah", icon: "building", value: t("100/200M", "১০০/২০০ মি.") },
+      { key: "food", icon: "food", value: t("Full-board Premium Dining", "ফুল-বোর্ড প্রিমিয়াম ডাইনিং") },
+      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+    ],
     summary: t(
       "Our signature 5-star experience with front-row proximity to the Haram and concierge-level care.",
       "হারামের একদম নিকটবর্তী ৫-তারকা আবাসন ও কনসিয়ার্জ-পর্যায়ের যত্ন সহ আমাদের সিগনেচার অভিজ্ঞতা।",

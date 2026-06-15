@@ -14,7 +14,7 @@ export function PackageGrid({
   dict: Dictionary;
 }) {
   return (
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {packages.map((pkg, i) => (
         <Reveal key={pkg.slug} delay={i * 60}>
           <PackageCard pkg={pkg} locale={locale} dict={dict} />
