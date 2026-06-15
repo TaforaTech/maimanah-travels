@@ -35,10 +35,10 @@ export function Logo({
       </svg>
       <span className="flex flex-col leading-none">
         <span className={cn("font-display text-xl font-semibold tracking-wide", wordColor)}>
-          Maimanah
+          Maimanah Travels
         </span>
-        <span className={cn("text-[0.62rem] font-semibold uppercase tracking-[0.32em]", subColor)}>
-          Travels
+        <span className={cn("mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.42em]", subColor)}>
+          Hajj &amp; Umrah
         </span>
       </span>
     </span>
