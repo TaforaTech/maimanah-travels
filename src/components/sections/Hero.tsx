@@ -49,11 +49,11 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </dl>
         </div>
 
-        {/* Looping hero video */}
+        {/* Looping hero video with overlaid card content */}
         <div className="relative hidden lg:col-span-5 lg:block lg:self-stretch">
-          <div className="absolute left-0 right-0 top-1/2 h-[90%] -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/15 shadow-luxury">
+          <div className="absolute left-0 right-0 top-1/2 h-[85%] -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/15 shadow-luxury">
             <video
-              className="h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
               src="/assets/running%20vedion_on_loop.mp4"
               autoPlay
               loop
@@ -61,6 +61,12 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               playsInline
               aria-hidden
             />
+            {/* Readability overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/45 via-transparent to-navy-950/15" aria-hidden />
+            {/* Overlaid content */}
+            <div className="relative flex h-full flex-col p-8">
+              <Icon name="kaaba" className="h-12 w-12 text-gold-400" strokeWidth={1.2} />
+            </div>
           </div>
         </div>
       </div>
