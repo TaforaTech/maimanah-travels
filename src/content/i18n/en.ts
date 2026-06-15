@@ -64,7 +64,7 @@ export const en = {
       subtitle:
         "From pre-registration to your return home, Maimanah Travels guides every step of your Hajj and Umrah with luxury comfort, scholarly guidance and complete peace of mind.",
       ctaPrimary: "Explore Umrah Packages",
-      ctaSecondary: "Talk to an Advisor",
+      ctaSecondary: "Free Consultancy",
     },
     announceTitle: "Latest Announcements",
     services: {
