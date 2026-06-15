@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { locales, localeNames, type Locale } from "@/content/i18n/config";
+import { locales, localeShortNames, type Locale } from "@/content/i18n/config";
 import { switchLocalePath } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -18,8 +18,10 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full p-0.5 text-xs font-semibold",
-        variant === "light" ? "bg-white/10" : "bg-navy-50",
+        "inline-flex items-center rounded-full p-1 text-xs font-semibold",
+        variant === "light"
+          ? "border border-white/20 bg-white/10"
+          : "border border-line bg-white",
       )}
       role="group"
       aria-label="Language"
@@ -35,13 +37,13 @@ export function LanguageSwitcher({
             className={cn(
               "rounded-full px-3 py-1.5 transition-colors",
               active
-                ? "bg-gold-gradient text-navy-900"
+                ? "bg-navy-100 text-navy-900"
                 : variant === "light"
-                  ? "text-cream-50 hover:text-gold-300"
-                  : "text-navy-700 hover:text-navy-900",
+                  ? "text-cream-50/80 hover:text-white"
+                  : "text-muted hover:text-navy-900",
             )}
           >
-            {localeNames[locale]}
+            {localeShortNames[locale]}
           </Link>
         );
       })}
