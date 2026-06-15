@@ -83,28 +83,63 @@ export const contentPages: Record<string, ContentPage> = {
   "hajj/pre-registration": {
     slug: "hajj/pre-registration",
     icon: "check",
-    title: t("Hajj Pre-Registration 2027", "হজ্জ প্রাক-নিবন্ধন ২০২৭"),
+    title: t("Hajj Pre-Registration in BD", "বাংলাদেশে হজ্জ প্রাক-নিবন্ধন"),
     subtitle: t(
-      "Reserve your place for the 2027 Hajj season early — government quotas are limited and fill quickly.",
-      "২০২৭ হজ্জ মৌসুমের জন্য আগেভাগে আপনার আসন সংরক্ষণ করুন—সরকারি কোটা সীমিত এবং দ্রুত পূর্ণ হয়।",
+      "Begin your journey to the House of Allah — we guide you through every step of Hajj pre-registration in Bangladesh.",
+      "আল্লাহর ঘরে আপনার সফর শুরু করুন—বাংলাদেশে হজ্জ প্রাক-নিবন্ধনের প্রতিটি ধাপে আমরা আপনার পাশে।",
     ),
     sections: [
       {
-        heading: t("Why pre-register early", "কেন আগে প্রাক-নিবন্ধন"),
+        heading: t(
+          "Start Your Sacred Journey with Hajj Pre-Registration in BD",
+          "হজ্জ প্রাক-নিবন্ধনের মাধ্যমে আপনার পবিত্র সফর শুরু করুন",
+        ),
         body: [
           t(
-            "Pre-registration secures your serial in the national Hajj queue. Registering early gives you the best chance of confirmation, preferred packages and ample time to prepare.",
-            "প্রাক-নিবন্ধন জাতীয় হজ্জ সিরিয়ালে আপনার ক্রম নিশ্চিত করে। আগে নিবন্ধন করলে নিশ্চিতকরণ, পছন্দের প্যাকেজ ও প্রস্তুতির পর্যাপ্ত সময়ের সর্বোত্তম সুযোগ মেলে।",
+            "The Hajj pilgrimage is among the most significant events in a Muslim's life, symbolizing devotion and submission to Allah. For pilgrims from Bangladesh, the process begins with the essential step of Hajj pre-registration in BD. This phase ensures that all necessary documentation and requirements meet Saudi regulations, paving the way for a blessed journey to the holy cities of Makkah and Madinah.",
+            "হজ্জ একজন মুসলিমের জীবনের অন্যতম তাৎপর্যপূর্ণ ঘটনা, যা আল্লাহর প্রতি ভক্তি ও আত্মসমর্পণের প্রতীক। বাংলাদেশের হাজীদের জন্য এই যাত্রা শুরু হয় হজ্জ প্রাক-নিবন্ধনের অপরিহার্য ধাপ দিয়ে। এই পর্যায়ে নিশ্চিত করা হয় যে প্রয়োজনীয় সকল কাগজপত্র ও শর্ত সৌদি বিধি-বিধান অনুযায়ী সম্পন্ন হয়েছে, যা মক্কা ও মদিনার পবিত্র নগরীতে বরকতময় সফরের পথ প্রশস্ত করে।",
+          ),
+          t(
+            "Maimanah Travels specializes in guiding individuals and families through the intricate process of Hajj pre-registration in BD. Our dedicated team of experts assists with paperwork, booking accommodations, and ensuring that each pilgrim understands the protocols involved. We pride ourselves on providing personalized support that accounts for the unique needs of each client.",
+            "মাইমানাহ ট্রাভেলস ব্যক্তি ও পরিবারকে হজ্জ প্রাক-নিবন্ধনের জটিল প্রক্রিয়ায় দিকনির্দেশনা দিতে বিশেষভাবে দক্ষ। আমাদের নিবেদিত বিশেষজ্ঞ দল কাগজপত্র প্রস্তুত, আবাসন বুকিং এবং প্রতিটি হাজী যেন প্রাসঙ্গিক নিয়মাবলি বুঝতে পারেন তা নিশ্চিত করতে সহায়তা করে। প্রতিটি গ্রাহকের স্বতন্ত্র প্রয়োজন বিবেচনায় নিয়ে ব্যক্তিগত সহায়তা প্রদান করাই আমাদের গর্ব।",
           ),
         ],
       },
       {
-        heading: t("The process with Maimanah", "মাইমানাহর সাথে প্রক্রিয়া"),
+        heading: t("Required Documents", "প্রয়োজনীয় কাগজপত্র"),
+        body: [t("Government Fee: BDT 30,000 per person.", "সরকারি ফি: জনপ্রতি ৩০,০০০ টাকা।")],
+      },
+      {
+        heading: t("Adult Application (Bangladeshi Resident)", "প্রাপ্তবয়স্ক আবেদনকারী (বাংলাদেশি নাগরিক)"),
         list: [
-          t("Free consultation to choose the right package", "সঠিক প্যাকেজ বাছাইয়ে ফ্রি পরামর্শ"),
-          t("Document collection and verification", "কাগজপত্র সংগ্রহ ও যাচাই"),
-          t("Government pre-registration and serial confirmation", "সরকারি প্রাক-নিবন্ধন ও সিরিয়াল নিশ্চিতকরণ"),
-          t("Ongoing guidance until departure", "যাত্রা পর্যন্ত নিয়মিত দিকনির্দেশনা"),
+          t("NID / Passport copy", "এনআইডি / পাসপোর্ট কপি"),
+          t("Valid mobile number", "বৈধ মোবাইল নম্বর"),
+        ],
+      },
+      {
+        heading: t("Non-Resident Bangladeshi (NRB) Applicant", "অনিবাসী বাংলাদেশি (এনআরবি) আবেদনকারী"),
+        list: [
+          t("Passport copy", "পাসপোর্ট কপি"),
+          t("Color-scanned soft copy of the birth certificate", "জন্ম নিবন্ধনের রঙিন স্ক্যান করা সফট কপি"),
+          t("Passport-size color photo (soft copy)", "পাসপোর্ট সাইজ রঙিন ছবি (সফট কপি)"),
+          t("Valid mobile number & email ID", "বৈধ মোবাইল নম্বর ও ইমেইল আইডি"),
+        ],
+      },
+      {
+        heading: t("Child Applicant (Along with Parents)", "শিশু আবেদনকারী (পিতামাতাসহ)"),
+        list: [
+          t("Birth certificate / Passport copy", "জন্ম নিবন্ধন / পাসপোর্ট কপি"),
+          t("Passport-size color photo (soft copy)", "পাসপোর্ট সাইজ রঙিন ছবি (সফট কপি)"),
+          t("Parent's valid mobile number & email ID", "পিতামাতার বৈধ মোবাইল নম্বর ও ইমেইল আইডি"),
+        ],
+      },
+      {
+        heading: t("Important Note", "গুরুত্বপূর্ণ নোট"),
+        body: [
+          t(
+            "Hajj pre-registration remains valid for 2 years.",
+            "হজ্জ প্রাক-নিবন্ধন ২ বছর পর্যন্ত বৈধ থাকে।",
+          ),
         ],
       },
     ],
