@@ -110,7 +110,6 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-navy-100 sm:flex-row">
           <p>© {year} {site.legalName}. {dict.footer.rights}</p>
-          <p className="text-center sm:text-right">{site.license}</p>
         </div>
       </div>
     </footer>
