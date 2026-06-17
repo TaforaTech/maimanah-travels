@@ -1,4 +1,4 @@
-import { Inter, Cormorant_Garamond, Noto_Sans_Bengali } from "next/font/google";
+import { Inter, El_Messiri, Noto_Sans_Bengali } from "next/font/google";
 
 export const inter = Inter({
   variable: "--font-inter",
@@ -6,7 +6,7 @@ export const inter = Inter({
   display: "swap",
 });
 
-export const display = Cormorant_Garamond({
+export const display = El_Messiri({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
