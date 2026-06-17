@@ -7,7 +7,7 @@ export const site = {
   legalName: "Maimanah Travels Ltd.",
   tagline: "Your Trusted Companion for a Sacred Journey",
   domain: "https://www.maimanahtravels.com",
-  email: "info@maimanahtravels.example",
+  email: "support@maimanahtravels.com",
   phone: "+880 1700 000000",
   phoneHref: "tel:+8801700000000",
   whatsapp: "+880 1700 000000",
