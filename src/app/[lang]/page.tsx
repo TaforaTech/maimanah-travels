@@ -25,12 +25,16 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale = (isLocale(lang) ? lang : "en") as Locale;
   const dict = getDictionary(locale);
-  return buildMetadata({
-    locale,
-    path: "/",
-    title: dict.home.hero.title,
-    description: dict.home.hero.subtitle,
-  });
+  return {
+    ...buildMetadata({
+      locale,
+      path: "/",
+      title: dict.home.hero.title,
+      description: dict.home.hero.subtitle,
+    }),
+    // Absolute title so the root template ("%s | Maimanah Travels") is not appended.
+    title: { absolute: "Maimanah Travels | Hajj and Umrah Services" },
+  };
 }
 
 export default async function HomePage({
