@@ -48,7 +48,7 @@ function useGlobe(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
 
       const scene = new T.Scene();
       const camera = new T.PerspectiveCamera(42, size.w / size.h, 0.1, 100);
-      camera.position.set(0, 0, 2.55);
+      camera.position.set(0, 0, 3.15);
 
       // lights
       scene.add(new T.AmbientLight(0xffffff, 0.9));
@@ -517,8 +517,8 @@ export function HajjGlobeGuide({ locale, onEnterRites }: { locale: Locale; onEnt
 
       {/* ---------- intro hero ---------- */}
       {!started && (
-        <div className="absolute inset-0 z-20 grid place-items-center p-5">
-          <div className="w-full max-w-md rounded-3xl border border-white/10 bg-navy-950/55 p-8 text-center shadow-luxury backdrop-blur-xl">
+        <div className="pointer-events-none absolute inset-0 z-20 grid place-items-center p-5">
+          <div className="pointer-events-auto w-full max-w-md rounded-3xl border border-white/10 bg-navy-950/55 p-8 text-center shadow-luxury backdrop-blur-xl">
             <div className="text-4xl">🕋</div>
             <h2 className="mt-3 text-3xl font-bold text-cream-50">
               {pick("Hajj Journey Guide", "হজ্জ যাত্রা গাইড")}
@@ -548,8 +548,8 @@ export function HajjGlobeGuide({ locale, onEnterRites }: { locale: Locale; onEnt
 
       {/* ---------- flight HUD ---------- */}
       {flying && (
-        <div className="absolute inset-x-0 bottom-0 z-20 p-5">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 rounded-2xl border border-white/10 bg-navy-950/70 px-6 py-4 text-cream-50 backdrop-blur-xl">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-5">
+          <div className="pointer-events-auto mx-auto flex max-w-3xl items-center justify-between gap-4 rounded-2xl border border-white/10 bg-navy-950/70 px-6 py-4 text-cream-50 backdrop-blur-xl">
             <div className="text-center">
               <div className="text-[11px] uppercase tracking-wide text-navy-100">{pick("Departure", "রওনা")}</div>
               <div className="text-sm font-semibold">{PLACES.dhaka.label[locale]}</div>
@@ -576,8 +576,8 @@ export function HajjGlobeGuide({ locale, onEnterRites }: { locale: Locale; onEnt
       {started && !flying && (
         <>
           {/* scrollable card on the right */}
-          <div className="absolute right-0 top-0 z-10 flex h-full w-full items-stretch justify-end p-3 sm:p-5 md:w-[460px]">
-            <div className="flex max-h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-950/70 shadow-luxury backdrop-blur-xl">
+          <div className="pointer-events-none absolute right-0 top-0 z-10 flex h-full w-full items-stretch justify-end p-3 sm:p-5 md:w-[460px]">
+            <div className="pointer-events-auto flex max-h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-950/70 shadow-luxury backdrop-blur-xl">
               <div className="border-b border-white/10 px-6 pb-4 pt-14 md:pt-6">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-gold-400">
                   <Icon name={station.icon} className="h-4 w-4" strokeWidth={1.8} />
