@@ -14,7 +14,7 @@ const dig = (n: number, l: Locale) =>
 const DEG = Math.PI / 180;
 /** Longitude offset calibrated to the land_ocean_ice_cloud texture. */
 const LNG_OFFSET = -90;
-const FLIGHT_MS = 6000;
+const FLIGHT_MS = 6500;
 const smooth = (p: number) => p * p * (3 - 2 * p);
 
 type GlobeApi = {
@@ -125,18 +125,68 @@ function useGlobe(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
       arc.visible = false;
       group.add(arc);
 
-      const planeCanvas = document.createElement("canvas");
-      planeCanvas.width = planeCanvas.height = 96;
-      const pctx = planeCanvas.getContext("2d")!;
-      pctx.font = "72px serif";
-      pctx.textAlign = "center";
-      pctx.textBaseline = "middle";
-      pctx.fillText("✈", 48, 52);
-      const planeTex = new T.CanvasTexture(planeCanvas);
-      const plane = new T.Sprite(new T.SpriteMaterial({ map: planeTex, transparent: true }));
-      plane.scale.setScalar(0.13);
+      // A detailed low-poly airliner (fuselage along +X, wings along Z, up +Y).
+      const buildPlane = () => {
+        const g = new T.Group();
+        const wh = new T.MeshPhongMaterial({ color: 0xf5f5f5, shininess: 90 });
+        const gd = new T.MeshPhongMaterial({ color: 0xd4af37, shininess: 70 });
+        const dk = new T.MeshPhongMaterial({ color: 0x111111 });
+        const bl = new T.MeshBasicMaterial({ color: 0xaaddff });
+
+        const fuse = new T.Mesh(new T.CylinderGeometry(0.038, 0.028, 0.38, 18), wh);
+        fuse.rotation.z = Math.PI / 2;
+        g.add(fuse);
+        const nose = new T.Mesh(new T.ConeGeometry(0.038, 0.14, 18), wh);
+        nose.rotation.z = -Math.PI / 2;
+        nose.position.x = 0.26;
+        g.add(nose);
+        const tail = new T.Mesh(new T.ConeGeometry(0.025, 0.08, 12), wh);
+        tail.rotation.z = Math.PI / 2;
+        tail.position.x = -0.21;
+        g.add(tail);
+        const wing = new T.Mesh(new T.BoxGeometry(0.24, 0.009, 0.62), wh);
+        wing.position.x = 0.02;
+        g.add(wing);
+        [-0.31, 0.31].forEach((z) => {
+          const wl = new T.Mesh(new T.BoxGeometry(0.06, 0.04, 0.006), wh);
+          wl.position.set(0.02, 0.018, z);
+          g.add(wl);
+        });
+        const hs = new T.Mesh(new T.BoxGeometry(0.1, 0.007, 0.24), wh);
+        hs.position.x = -0.18;
+        g.add(hs);
+        const vf = new T.Mesh(new T.BoxGeometry(0.1, 0.07, 0.006), wh);
+        vf.position.set(-0.16, 0.038, 0);
+        g.add(vf);
+        const stripe = new T.Mesh(new T.CylinderGeometry(0.04, 0.03, 0.06, 18), gd);
+        stripe.rotation.z = Math.PI / 2;
+        stripe.position.x = 0.04;
+        g.add(stripe);
+        [-0.13, 0.13].forEach((z) => {
+          const eng = new T.Mesh(new T.CylinderGeometry(0.022, 0.018, 0.1, 14), wh);
+          eng.rotation.z = Math.PI / 2;
+          eng.position.set(0.03, -0.022, z);
+          g.add(eng);
+          const ring = new T.Mesh(new T.TorusGeometry(0.022, 0.004, 8, 18), dk);
+          ring.rotation.y = Math.PI / 2;
+          ring.position.set(0.08, -0.022, z);
+          g.add(ring);
+        });
+        for (let wx = -0.06; wx <= 0.14; wx += 0.045) {
+          const win = new T.Mesh(new T.BoxGeometry(0.012, 0.018, 0.042), bl);
+          win.position.set(wx, 0.035, 0);
+          g.add(win);
+        }
+        return g;
+      };
+
+      const plane = buildPlane();
+      plane.scale.setScalar(0.32);
       plane.visible = false;
       group.add(plane);
+      const _up = new T.Vector3();
+      const _right = new T.Vector3();
+      const _basis = new T.Matrix4();
 
       // orientation that brings a local unit vector to face the camera (+Z), keeping north up
       const faceQuat = (v: THREE.Vector3) => {
@@ -225,6 +275,14 @@ function useGlobe(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
           group.quaternion.slerpQuaternions(flight.from, flight.to, e);
           const pos = flight.curve.getPointAt(p);
           plane.position.copy(pos);
+          if (p < 0.999) {
+            const tan = flight.curve.getTangentAt(p).normalize();
+            _up.copy(pos).normalize();
+            _right.crossVectors(tan, _up).normalize();
+            _up.crossVectors(_right, tan).normalize();
+            _basis.makeBasis(tan, _up, _right); // nose(+X)→travel, up(+Y)→radial
+            plane.setRotationFromMatrix(_basis);
+          }
           flight.onProgress(p);
           if (p >= 1) {
             flight.active = false;
@@ -365,7 +423,7 @@ export function HajjGlobeGuide({ locale, onEnterRites }: { locale: Locale; onEnt
   };
 
   return (
-    <section className="relative h-[88vh] min-h-[620px] w-full overflow-hidden bg-[radial-gradient(120%_120%_at_50%_20%,#0b2a20_0%,#03140f_55%,#010806_100%)]">
+    <section className="relative h-[100svh] w-full overflow-hidden bg-black">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full touch-none" />
 
       {/* location labels (positioned by the globe loop) */}

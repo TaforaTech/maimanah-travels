@@ -5,6 +5,10 @@ import { fontVars } from "@/app/fonts";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ChromeGate } from "@/components/layout/ChromeGate";
+
+/** Full-screen routes that render without the site header/footer. */
+const IMMERSIVE_ROUTES = ["/hajj-guide"];
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -40,12 +44,16 @@ export default async function LocaleLayout({
         >
           {dict.common.skipToContent}
         </a>
-        <AnnouncementBar locale={locale} />
-        <Header locale={locale} dict={dict} />
+        <ChromeGate hideOn={IMMERSIVE_ROUTES}>
+          <AnnouncementBar locale={locale} />
+          <Header locale={locale} dict={dict} />
+        </ChromeGate>
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer locale={locale} dict={dict} />
+        <ChromeGate hideOn={IMMERSIVE_ROUTES}>
+          <Footer locale={locale} dict={dict} />
+        </ChromeGate>
       </body>
     </html>
   );

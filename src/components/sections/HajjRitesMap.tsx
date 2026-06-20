@@ -163,11 +163,11 @@ export function HajjRitesMap({ locale, onRestart }: { locale: Locale; onRestart:
   };
 
   return (
-    <section className="relative h-[88vh] min-h-[620px] w-full overflow-hidden bg-navy-950">
+    <section className="relative h-[100svh] w-full overflow-hidden bg-black">
       <div ref={containerRef} className="absolute inset-0 h-full w-full" />
 
-      {/* mode label (top-left) */}
-      <div className="pointer-events-none absolute left-4 top-4 z-10 rounded-full border border-white/15 bg-black/55 px-4 py-2 text-xs font-semibold text-gold-300 backdrop-blur">
+      {/* mode label (top-left, below the brand logo) */}
+      <div className="pointer-events-none absolute left-5 top-[68px] z-10 rounded-full border border-white/15 bg-black/55 px-4 py-2 text-xs font-semibold text-gold-300 backdrop-blur">
         {done ? pick("Completed", "সম্পন্ন") : stage.modeTxt[locale]}
       </div>
 

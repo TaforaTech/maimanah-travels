@@ -4,8 +4,6 @@ import { getDictionary, localePath } from "@/lib/i18n";
 import { resolveLocale, contentMetadata } from "@/lib/page-helpers";
 import { getContentPage } from "@/content/data/pages";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
-import { CTASection } from "@/components/sections/CTASection";
-import { Section } from "@/components/ui/Section";
 import { HajjExperience } from "@/components/sections/HajjExperience";
 
 const SLUG = "hajj-guide";
@@ -30,15 +28,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         ])}
       />
       <HajjExperience locale={locale} />
-      <Section tone="cream" className="pb-24">
-        <CTASection
-          locale={locale}
-          title={dict.home.finalCta.title}
-          description={dict.home.finalCta.description}
-          primaryHref={localePath("/contact", locale)}
-          primaryLabel={dict.common.getConsultation}
-        />
-      </Section>
     </>
   );
 }
