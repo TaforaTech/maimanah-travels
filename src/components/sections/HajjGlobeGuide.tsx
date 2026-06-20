@@ -125,63 +125,139 @@ function useGlobe(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
       arc.visible = false;
       group.add(arc);
 
-      // A detailed low-poly airliner (fuselage along +X, wings along Z, up +Y).
+      // A modern twin-engine passenger jet (fuselage along +X, nose +X, wings span Z, up +Y).
       const buildPlane = () => {
         const g = new T.Group();
-        const wh = new T.MeshPhongMaterial({ color: 0xf5f5f5, shininess: 90 });
+        const wh = new T.MeshPhongMaterial({ color: 0xf7f7fa, shininess: 80, side: T.DoubleSide });
         const gd = new T.MeshPhongMaterial({ color: 0xd4af37, shininess: 70 });
-        const dk = new T.MeshPhongMaterial({ color: 0x111111 });
-        const bl = new T.MeshBasicMaterial({ color: 0xaaddff });
+        const gr = new T.MeshPhongMaterial({ color: 0x0f6b4f, shininess: 70, side: T.DoubleSide });
+        const dk = new T.MeshPhongMaterial({ color: 0x10100f, shininess: 40 });
+        const mt = new T.MeshPhongMaterial({ color: 0xcfd3d8, shininess: 110 });
+        const bl = new T.MeshBasicMaterial({ color: 0x9fd6ff });
+        const cp = new T.MeshPhongMaterial({ color: 0x16202b, shininess: 120 });
 
-        const fuse = new T.Mesh(new T.CylinderGeometry(0.038, 0.028, 0.38, 18), wh);
-        fuse.rotation.z = Math.PI / 2;
+        // smooth tapered fuselage via a lathed profile, then laid along +X
+        const profile = [
+          [0.0, -0.30],
+          [0.011, -0.27],
+          [0.024, -0.21],
+          [0.036, -0.11],
+          [0.042, 0.02],
+          [0.042, 0.15],
+          [0.036, 0.23],
+          [0.022, 0.29],
+          [0.008, 0.32],
+          [0.0, 0.33],
+        ].map(([r, y]) => new T.Vector2(r, y));
+        const fuse = new T.Mesh(new T.LatheGeometry(profile, 28), wh);
+        fuse.rotation.z = -Math.PI / 2; // profile top (+Y) -> nose (+X)
         g.add(fuse);
-        const nose = new T.Mesh(new T.ConeGeometry(0.038, 0.14, 18), wh);
-        nose.rotation.z = -Math.PI / 2;
-        nose.position.x = 0.26;
-        g.add(nose);
-        const tail = new T.Mesh(new T.ConeGeometry(0.025, 0.08, 12), wh);
-        tail.rotation.z = Math.PI / 2;
-        tail.position.x = -0.21;
-        g.add(tail);
-        const wing = new T.Mesh(new T.BoxGeometry(0.24, 0.009, 0.62), wh);
-        wing.position.x = 0.02;
-        g.add(wing);
-        [-0.31, 0.31].forEach((z) => {
-          const wl = new T.Mesh(new T.BoxGeometry(0.06, 0.04, 0.006), wh);
-          wl.position.set(0.02, 0.018, z);
-          g.add(wl);
+
+        // swept, tapered lifting surface; span along +Z, chord along X, thin in Y
+        const surface = (
+          rootC: number,
+          tipC: number,
+          span: number,
+          sweep: number,
+          thick: number,
+          mat: THREE.Material = wh,
+        ) => {
+          const s = new T.Shape();
+          s.moveTo(0, rootC * 0.5);
+          s.lineTo(span, rootC * 0.5 - sweep);
+          s.lineTo(span, rootC * 0.5 - sweep - tipC);
+          s.lineTo(0, -rootC * 0.5);
+          s.closePath();
+          const geo = new T.ExtrudeGeometry(s, { depth: thick, bevelEnabled: false, steps: 1 });
+          geo.translate(0, 0, -thick / 2);
+          const m = new T.Mesh(geo, mat);
+          // local X(span)->Z, Y(chord)->X, Z(thick)->Y
+          m.quaternion.setFromAxisAngle(new T.Vector3(1, 1, 1).normalize(), (-2 * Math.PI) / 3);
+          return m;
+        };
+
+        // main wings with dihedral + upturned winglets
+        [1, -1].forEach((side) => {
+          const pivot = new T.Group();
+          const wing = surface(0.15, 0.05, 0.32, 0.17, 0.012);
+          pivot.add(wing);
+          const tip = surface(0.05, 0.022, 0.05, 0.03, 0.01, gr);
+          tip.position.z = 0.32;
+          tip.rotation.x = -1.0; // raked winglet
+          pivot.add(tip);
+          pivot.position.set(0.01, -0.018, side * 0.036);
+          pivot.scale.z = side;
+          pivot.rotation.x = side * -0.09; // dihedral, both tips up
+          g.add(pivot);
         });
-        const hs = new T.Mesh(new T.BoxGeometry(0.1, 0.007, 0.24), wh);
-        hs.position.x = -0.18;
-        g.add(hs);
-        const vf = new T.Mesh(new T.BoxGeometry(0.1, 0.07, 0.006), wh);
-        vf.position.set(-0.16, 0.038, 0);
-        g.add(vf);
-        const stripe = new T.Mesh(new T.CylinderGeometry(0.04, 0.03, 0.06, 18), gd);
-        stripe.rotation.z = Math.PI / 2;
-        stripe.position.x = 0.04;
-        g.add(stripe);
-        [-0.13, 0.13].forEach((z) => {
-          const eng = new T.Mesh(new T.CylinderGeometry(0.022, 0.018, 0.1, 14), wh);
-          eng.rotation.z = Math.PI / 2;
-          eng.position.set(0.03, -0.022, z);
-          g.add(eng);
-          const ring = new T.Mesh(new T.TorusGeometry(0.022, 0.004, 8, 18), dk);
-          ring.rotation.y = Math.PI / 2;
-          ring.position.set(0.08, -0.022, z);
-          g.add(ring);
+
+        // horizontal stabilizers
+        [1, -1].forEach((side) => {
+          const pivot = new T.Group();
+          pivot.add(surface(0.07, 0.026, 0.14, 0.08, 0.009));
+          pivot.position.set(-0.235, 0.012, side * 0.02);
+          pivot.scale.z = side;
+          pivot.rotation.x = side * -0.04;
+          g.add(pivot);
         });
-        for (let wx = -0.06; wx <= 0.14; wx += 0.045) {
-          const win = new T.Mesh(new T.BoxGeometry(0.012, 0.018, 0.042), bl);
-          win.position.set(wx, 0.035, 0);
-          g.add(win);
-        }
+
+        // swept vertical tail fin
+        const finPivot = new T.Group();
+        finPivot.add(surface(0.12, 0.05, 0.16, 0.11, 0.009, gr));
+        finPivot.position.set(-0.235, 0.03, 0);
+        finPivot.rotation.x = -Math.PI / 2; // span +Z -> up +Y
+        g.add(finPivot);
+        const finLogo = new T.Mesh(new T.BoxGeometry(0.05, 0.07, 0.004), gd);
+        finLogo.position.set(-0.26, 0.13, 0);
+        g.add(finLogo);
+
+        // underwing turbofan engines
+        [0.155, -0.155].forEach((z) => {
+          const cowl = new T.Mesh(new T.CylinderGeometry(0.027, 0.025, 0.13, 18), mt);
+          cowl.rotation.z = Math.PI / 2;
+          cowl.position.set(0.05, -0.05, z);
+          g.add(cowl);
+          const band = new T.Mesh(new T.CylinderGeometry(0.0275, 0.026, 0.03, 18), gr);
+          band.rotation.z = Math.PI / 2;
+          band.position.set(0.0, -0.05, z);
+          g.add(band);
+          const lip = new T.Mesh(new T.TorusGeometry(0.027, 0.005, 10, 20), gd);
+          lip.rotation.y = Math.PI / 2;
+          lip.position.set(0.115, -0.05, z);
+          g.add(lip);
+          const inlet = new T.Mesh(new T.CircleGeometry(0.022, 18), dk);
+          inlet.rotation.y = Math.PI / 2;
+          inlet.position.set(0.114, -0.05, z);
+          g.add(inlet);
+          const exhaust = new T.Mesh(new T.ConeGeometry(0.02, 0.05, 16), dk);
+          exhaust.rotation.z = -Math.PI / 2;
+          exhaust.position.set(-0.04, -0.05, z);
+          g.add(exhaust);
+          const pylon = new T.Mesh(new T.BoxGeometry(0.06, 0.04, 0.012), wh);
+          pylon.position.set(0.04, -0.028, z);
+          g.add(pylon);
+        });
+
+        // cockpit glass + gold cheatline + cabin windows
+        const cockpit = new T.Mesh(new T.SphereGeometry(0.036, 16, 12), cp);
+        cockpit.scale.set(1.5, 0.8, 0.85);
+        cockpit.position.set(0.235, 0.012, 0);
+        g.add(cockpit);
+        [0.0445, -0.0445].forEach((z) => {
+          const line = new T.Mesh(new T.BoxGeometry(0.42, 0.012, 0.003), gd);
+          line.position.set(0.0, 0.012, z);
+          g.add(line);
+          for (let wx = -0.16; wx <= 0.18; wx += 0.035) {
+            const win = new T.Mesh(new T.BoxGeometry(0.01, 0.012, 0.002), bl);
+            win.position.set(wx, 0.012, z + (z > 0 ? 0.001 : -0.001));
+            g.add(win);
+          }
+        });
         return g;
       };
 
       const plane = buildPlane();
-      plane.scale.setScalar(0.32);
+      plane.scale.setScalar(0.25);
       plane.visible = false;
       group.add(plane);
       const _up = new T.Vector3();
