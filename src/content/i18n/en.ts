@@ -7,6 +7,7 @@ export const en = {
   nav: {
     home: "Home",
     hajj: "Hajj",
+    hajjGuide: "Virtual Hajj Guide",
     umrah: "Umrah",
     assistance: "Assistance",
     about: "About",

@@ -41,6 +41,7 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), Georgia, "Times New Roman", serif;
   --font-bangla: var(--font-bangla), var(--font-inter), sans-serif;
+  --font-arabic: var(--font-arabic), "Traditional Arabic", "Scheherazade New", serif;
 
   /* Radius & shadow */
   --radius-xl2: 1.5rem;
@@ -119,6 +120,14 @@
 }
 
 @layer components {
+  /* Arabic script (Quranic text / duas) — RTL, generous line-height for tashkeel */
+  .font-arabic {
+    font-family: var(--font-arabic);
+    direction: rtl;
+    line-height: 2;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
   /* Premium gold gradient text/fills used for accents */
   .text-gold-gradient {
     background: linear-gradient(100deg, var(--color-gold-400), var(--color-gold-600));
@@ -164,6 +173,55 @@
 }
 
 @layer utilities {
+  /* --- Hajj journey 3D map --- */
+  /* Tilted, floating map plate that gives the flat SVG a sense of depth. */
+  .hj-stage {
+    perspective: 1400px;
+    perspective-origin: 50% 30%;
+  }
+  .hj-plate {
+    transform: rotateX(34deg) scale(1.02);
+    transform-origin: 50% 60%;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .hj-stage:hover .hj-plate {
+    transform: rotateX(26deg) scale(1.04);
+  }
+  /* Animated dash flow along the flight route. */
+  @keyframes hj-dash {
+    to {
+      stroke-dashoffset: -28;
+    }
+  }
+  .hj-route {
+    stroke-dasharray: 4 10;
+    animation: hj-dash 1.1s linear infinite;
+  }
+  /* Pulsing halo on the active location marker. */
+  @keyframes hj-pulse {
+    0% {
+      r: 10;
+      opacity: 0.55;
+    }
+    100% {
+      r: 30;
+      opacity: 0;
+    }
+  }
+  .hj-pulse {
+    animation: hj-pulse 2s ease-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hj-route,
+    .hj-pulse {
+      animation: none;
+    }
+    .hj-plate {
+      transform: rotateX(20deg);
+    }
+  }
+
   /*
     Scroll-reveal animation (paired with components/ui/Reveal).
     Gated behind html.js so content is always visible when JS is unavailable

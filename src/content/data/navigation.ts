@@ -26,6 +26,7 @@ export const mainNav: NavGroup[] = [
       { labelKey: "hajjSignificance", href: "/hajj/significance" },
     ],
   },
+  { labelKey: "hajjGuide", href: "/hajj-guide" },
   {
     labelKey: "umrah",
     href: "/umrah",

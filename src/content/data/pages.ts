@@ -145,6 +145,49 @@ export const contentPages: Record<string, ContentPage> = {
     ],
   },
 
+  "hajj-guide": {
+    slug: "hajj-guide",
+    icon: "book",
+    title: t("Virtual Hajj Guide", "ভার্চুয়াল হজ্জ গাইড"),
+    subtitle: t(
+      "A step-by-step guide to performing Hajj — from preparation at home to the rites in Makkah and Madinah.",
+      "হজ্জ পালনের ধাপে ধাপে নির্দেশিকা—দেশে প্রস্তুতি থেকে শুরু করে মক্কা ও মদিনায় মানাসিক পর্যন্ত।",
+    ),
+    sections: [
+      {
+        heading: t("Before you travel", "যাত্রার পূর্বে"),
+        list: [
+          t("Complete pre-registration and finalize your package", "প্রাক-নিবন্ধন সম্পন্ন করুন ও প্যাকেজ চূড়ান্ত করুন"),
+          t("Prepare your passport, visa and vaccination certificates", "পাসপোর্ট, ভিসা ও টিকা সনদ প্রস্তুত রাখুন"),
+          t("Attend our Hajj training and orientation sessions", "আমাদের হজ্জ প্রশিক্ষণ ও ওরিয়েন্টেশন সেশনে অংশ নিন"),
+          t("Learn the essential supplications and rites", "প্রয়োজনীয় দোয়া ও মানাসিক শিখে নিন"),
+        ],
+      },
+      {
+        heading: t("The rites of Hajj, step by step", "ধাপে ধাপে হজ্জের মানাসিক"),
+        list: [
+          t("Enter Ihram and make the intention for Hajj", "ইহরাম বাঁধুন ও হজ্জের নিয়ত করুন"),
+          t("Spend the day at Mina (8th of Dhul-Hijjah)", "মিনায় দিন কাটান (৮ই জিলহজ্জ)"),
+          t("Stand at Arafah — the essence of Hajj (9th)", "আরাফায় অবস্থান—হজ্জের মূল (৯ই)"),
+          t("Proceed to Muzdalifah and gather pebbles", "মুজদালিফায় যান ও কঙ্কর সংগ্রহ করুন"),
+          t("Stone the Jamarat, offer sacrifice and shave/trim", "জামারাতে কঙ্কর নিক্ষেপ, কুরবানি ও হলক/তাকসীর"),
+          t("Perform Tawaf al-Ifadah and Sa'i", "তাওয়াফুল ইফাদা ও সাঈ আদায় করুন"),
+          t("Complete the days of Tashreeq at Mina", "মিনায় আইয়ামে তাশরীক সম্পন্ন করুন"),
+          t("Perform the farewell Tawaf before leaving", "প্রস্থানের পূর্বে বিদায়ী তাওয়াফ করুন"),
+        ],
+      },
+      {
+        heading: t("How we support you", "আমরা যেভাবে আপনার পাশে থাকি"),
+        body: [
+          t(
+            "Our experienced guides accompany you throughout the journey, helping you perform every rite correctly and with peace of mind. If you have any questions, our team is always available to assist.",
+            "আমাদের অভিজ্ঞ গাইডগণ পুরো সফরে আপনার সঙ্গে থাকেন, প্রতিটি মানাসিক সঠিকভাবে ও প্রশান্ত মনে আদায়ে সহায়তা করেন। যেকোনো প্রশ্নে আমাদের টিম সর্বদা আপনার পাশে।",
+          ),
+        ],
+      },
+    ],
+  },
+
   "umrah/visa-requirements": {
     slug: "umrah/visa-requirements",
     icon: "passport",

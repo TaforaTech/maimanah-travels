@@ -1,4 +1,4 @@
-import { Inter, El_Messiri, Noto_Sans_Bengali } from "next/font/google";
+import { Inter, El_Messiri, Noto_Sans_Bengali, Amiri } from "next/font/google";
 
 export const inter = Inter({
   variable: "--font-inter",
@@ -19,4 +19,11 @@ export const bangla = Noto_Sans_Bengali({
   display: "swap",
 });
 
-export const fontVars = `${inter.variable} ${display.variable} ${bangla.variable}`;
+export const arabic = Amiri({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+export const fontVars = `${inter.variable} ${display.variable} ${bangla.variable} ${arabic.variable}`;

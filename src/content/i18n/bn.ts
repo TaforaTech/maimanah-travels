@@ -9,6 +9,7 @@ export const bn: Dictionary = {
   nav: {
     home: "হোম",
     hajj: "হজ্জ",
+    hajjGuide: "ভার্চুয়াল হজ্জ গাইড",
     umrah: "উমরাহ",
     assistance: "সহায়তা",
     about: "পরিচিতি",
