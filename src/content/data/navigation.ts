@@ -15,7 +15,7 @@ export type NavGroup = {
 };
 
 export const mainNav: NavGroup[] = [
-  { labelKey: "home", href: "/" },
+  { labelKey: "hajjGuide", href: "/hajj-guide" },
   {
     labelKey: "hajj",
     href: "/hajj",
@@ -26,7 +26,6 @@ export const mainNav: NavGroup[] = [
       { labelKey: "hajjSignificance", href: "/hajj/significance" },
     ],
   },
-  { labelKey: "hajjGuide", href: "/hajj-guide" },
   {
     labelKey: "umrah",
     href: "/umrah",
@@ -55,9 +54,9 @@ export const mainNav: NavGroup[] = [
       { labelKey: "testimonials", href: "/testimonials" },
       { labelKey: "blog", href: "/blog" },
       { labelKey: "faq", href: "/faq" },
+      { labelKey: "contact", href: "/contact" },
     ],
   },
-  { labelKey: "contact", href: "/contact" },
 ];
 
 export const footerNav: { titleKey: string; links: NavLeaf[] }[] = [
