@@ -10,7 +10,7 @@ export const en = {
     hajjGuide: "Virtual Hajj Guide",
     umrah: "Umrah",
     assistance: "Assistance",
-    about: "About",
+    about: "Resources",
     contact: "Contact",
     hajjPackages: "Hajj Packages",
     hajjPreRegistration: "Hajj Pre-Registration 2027",
