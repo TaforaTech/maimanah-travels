@@ -20,14 +20,18 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <span className="h-1.5 w-1.5 rounded-full bg-gold-400" aria-hidden />
             {h.badge}
           </Badge>
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.1] text-cream-50 sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-xl text-4xl font-semibold leading-[1.1] text-cream-50 sm:text-5xl lg:max-w-none lg:text-[2.25rem] xl:text-[2.75rem] 2xl:text-5xl">
             {h.title}
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-navy-100 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-navy-100 sm:text-lg lg:text-base">
             {h.subtitle}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={localePath("/umrah/packages", locale)} size="lg">
+            <ButtonLink
+              href={localePath("/umrah/packages", locale)}
+              size="lg"
+              className="lg:px-5 lg:py-2.5 lg:text-base"
+            >
               {h.ctaPrimary}
               <Icon name="arrow" className="h-4 w-4" />
             </ButtonLink>
@@ -35,7 +39,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               href={site.whatsappHref}
               size="lg"
               variant="outline"
-              className="border-white/30 text-cream-50 hover:bg-white/10 hover:text-cream-50"
+              className="border-white/30 text-cream-50 hover:bg-white/10 hover:text-cream-50 lg:px-5 lg:py-2.5 lg:text-base"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/assets/icons8-whatsapp.svg" alt="" className="h-6 w-6" />
