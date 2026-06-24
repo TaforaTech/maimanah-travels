@@ -13,6 +13,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
   const locale = await resolveLocale(params);
   const dict = getDictionary(locale);
   return (
-    <InfoPage slug={SLUG} locale={locale} dict={dict} parentCrumbs={[{ label: dict.nav.assistance }]} />
+    <InfoPage slug={SLUG} locale={locale} dict={dict} parentCrumbs={[{ label: dict.nav.about }]} />
   );
 }

@@ -39,7 +39,6 @@ export const mainNav: NavGroup[] = [
     labelKey: "assistance",
     children: [
       { labelKey: "consultation", href: "/services/consultation" },
-      { labelKey: "training", href: "/services/training" },
       { labelKey: "ticketing", href: "/services/ticketing" },
       { labelKey: "visaProcessing", href: "/services/visa-processing" },
     ],
@@ -49,6 +48,7 @@ export const mainNav: NavGroup[] = [
     href: "/about",
     children: [
       { labelKey: "aboutUs", href: "/about" },
+      { labelKey: "training", href: "/services/training" },
       { labelKey: "gallery", href: "/gallery" },
       { labelKey: "ziyarah", href: "/ziyarah" },
       { labelKey: "testimonials", href: "/testimonials" },

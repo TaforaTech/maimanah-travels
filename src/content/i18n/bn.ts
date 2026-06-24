@@ -11,7 +11,7 @@ export const bn: Dictionary = {
     hajj: "হজ্জ",
     hajjGuide: "ভার্চুয়াল হজ্জ গাইড",
     umrah: "উমরাহ",
-    assistance: "সহায়তা",
+    assistance: "ভিসা ও টিকিট",
     about: "রিসোর্স",
     contact: "যোগাযোগ",
     hajjPackages: "হজ্জ প্যাকেজ",
