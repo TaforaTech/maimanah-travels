@@ -13,6 +13,7 @@ export type Hajj2027Spec = {
     | "madinah"
     | "hotel"
     | "distance"
+    | "madinahDistance"
     | "room"
     | "food"
     | "ziyarah"
@@ -53,6 +54,7 @@ export const hajj2027Copy = {
     madinah: t("Hotel Madinah", "হোটেল মদিনা"),
     hotel: t("Hotel", "হোটেল"),
     distance: t("Distance from Haram", "হারাম থেকে দূরত্ব"),
+    madinahDistance: t("Distance from Masjid an-Nabawi", "মসজিদে নববী থেকে দূরত্ব"),
     room: t("Room Sharing", "রুম শেয়ারিং"),
     food: t("Food", "খাবার"),
     ziyarah: t("Ziyarah", "যিয়ারাহ"),

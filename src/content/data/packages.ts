@@ -15,6 +15,7 @@ export type PackageSpec = {
     | "madinah"
     | "hotel"
     | "distance"
+    | "madinahDistance"
     | "room"
     | "food"
     | "ziyarah"
@@ -165,7 +166,8 @@ export const packages: TravelPackage[] = [
       { key: "duration", icon: "clock", value: t("14 Days", "১৪ দিন") },
       { key: "flight", icon: "plane", value: t("Saudia / Biman / US-Bangla", "সৌদিয়া / বিমান / ইউএস-বাংলা") },
       { key: "hotel", icon: "building", value: t("Makkah 5-star · Madinah 3-star", "মক্কায় ৫-স্টার · মদিনায় ৩-স্টার") },
-      { key: "distance", icon: "pin", value: t("Makkah: adjacent (0 min) · Madinah: ~200m", "মক্কা: হারাম সংলগ্ন (০ মিনিট) · মদিনা: প্রায় ২০০ মিটার") },
+      { key: "distance", icon: "pin", value: t("Makkah: adjacent (0 min)", "মক্কা: হারাম সংলগ্ন (০ মিনিট)") },
+      { key: "madinahDistance", icon: "pin", value: t("Madinah: ~200m", "মদিনা: প্রায় ২০০ মিটার") },
       { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },
       { key: "food", icon: "food", value: t("3 meals daily", "দৈনিক ৩ বেলা") },
       { key: "ziyarah", icon: "mosque", value: t("Sites in Makkah & Madinah", "মক্কা ও মদিনার দর্শনীয় স্থান") },
