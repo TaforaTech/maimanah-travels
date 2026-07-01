@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ChromeGate } from "@/components/layout/ChromeGate";
 
 /** Full-screen routes that render without the site header/footer. */
-const IMMERSIVE_ROUTES = ["/hajj-guide"];
+const IMMERSIVE_ROUTES = ["/hajj-guide", "/login"];
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
