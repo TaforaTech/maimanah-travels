@@ -126,10 +126,10 @@ export function Header({
               type="button"
               aria-haspopup="true"
               aria-label={dict.common.login}
-              className="inline-flex items-center gap-2 rounded-full border border-line px-2.5 py-2 text-sm font-medium text-navy-800 transition-colors hover:border-gold-300 hover:bg-navy-50 hover:text-navy-900"
+              className="inline-flex items-center rounded-full border-2 border-[#C19A2E] px-2.5 py-2 text-sm font-medium text-navy-800 transition-colors hover:bg-navy-50 hover:text-navy-900"
             >
               <Icon name="user" className="h-5 w-5" />
-              <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-200 group-hover:max-w-[6rem] group-hover:opacity-100">
+              <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-200 group-hover:ml-2 group-hover:max-w-[6rem] group-hover:opacity-100">
                 {dict.common.login}
               </span>
             </button>
