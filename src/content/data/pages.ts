@@ -207,6 +207,17 @@ export const contentPages: Record<string, ContentPage> = {
         ],
       },
       {
+        heading: t(
+          "📋 Documents required for Umrah registration",
+          "📋 ওমরাহ রেজিস্ট্রেশনের জন্য প্রয়োজনীয় কাগজপত্র",
+        ),
+        list: [
+          t("Copy of National ID card (NID)", "জাতীয় পরিচয়পত্র (NID) এর কপি"),
+          t("Registration fee: 10,000 Taka", "রেজিস্ট্রেশন ফি: ১০,০০০ টাকা"),
+          t("Mobile number", "মোবাইল নম্বর"),
+        ],
+      },
+      {
         heading: t("Processing time", "প্রসেসিং সময়"),
         body: [
           t(

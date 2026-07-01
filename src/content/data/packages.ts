@@ -6,7 +6,19 @@ export type PackageCategory = "umrah" | "hajj";
 export type LocalizedText = Record<Locale, string>;
 
 export type PackageSpec = {
-  key: "duration" | "flight" | "aziziyah" | "makkah" | "madinah" | "food" | "services";
+  key:
+    | "duration"
+    | "flight"
+    | "aziziyah"
+    | "makkah"
+    | "madinah"
+    | "hotel"
+    | "distance"
+    | "room"
+    | "food"
+    | "ziyarah"
+    | "transport"
+    | "services";
   icon: IconName;
   value: LocalizedText;
 };
@@ -38,36 +50,38 @@ export const packages: TravelPackage[] = [
   {
     slug: "umrah-economy",
     category: "umrah",
-    name: t("Economy Umrah Package", "ইকোনমি উমরাহ প্যাকেজ"),
+    name: t("Package A", "প্যাকেজ A"),
     tier: t("Value", "সাশ্রয়ী"),
-    price: 135000,
-    durationDays: 12,
-    nights: { makkah: 6, madinah: 5 },
+    price: 130000,
+    durationDays: 14,
+    nights: { makkah: 8, madinah: 5 },
     hotelStars: 3,
     featured: true,
     specs: [
-      { key: "duration", icon: "clock", value: t("12/13 Days", "১২/১৩ দিন") },
-      { key: "flight", icon: "plane", value: t("Saudia / US-Bangla", "সৌদিয়া / ইউএস-বাংলা") },
-      { key: "makkah", icon: "building", value: t("700/1000M", "৭০০/১০০০ মি.") },
-      { key: "madinah", icon: "building", value: t("700/900M", "৭০০/৯০০ মি.") },
-      { key: "food", icon: "food", value: t("Breakfast & Dinner", "সকাল ও রাতের খাবার") },
-      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+      { key: "duration", icon: "clock", value: t("14 Days", "১৪ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia / Biman Bangladesh", "সৌদিয়া / বিমান বাংলাদেশ") },
+      { key: "hotel", icon: "building", value: t("Star-standard hotels", "স্টার মানের হোটেল") },
+      { key: "distance", icon: "pin", value: t("~1,000m (10–12 min walk)", "প্রায় ১,০০০ মিটার (১০–১২ মিনিট হাঁটা পথ)") },
+      { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },
+      { key: "food", icon: "food", value: t("3 meals daily", "দৈনিক ৩ বেলা") },
+      { key: "ziyarah", icon: "mosque", value: t("Sites in Makkah & Madinah", "মক্কা ও মদিনার দর্শনীয় স্থান") },
+      { key: "transport", icon: "bus", value: t("Bus service in Saudi Arabia", "সৌদি আরবে বাস সার্ভিস") },
     ],
     summary: t(
-      "A comfortable, affordable Umrah with clean 3-star stays and guided rituals — ideal for first-time pilgrims.",
-      "পরিষ্কার ৩-তারকা আবাসন ও পরিচালিত ইবাদত সহ আরামদায়ক, সাশ্রয়ী উমরাহ—প্রথমবারের হাজীদের জন্য আদর্শ।",
+      "A value Umrah over 14 days — BDT 1,30,000 with a transit flight or BDT 1,50,000 direct, with star-standard hotels and full ziyarah.",
+      "১৪ দিনের সাশ্রয়ী উমরাহ—ট্রানজিট ফ্লাইটে ১,৩০,০০০ টাকা অথবা ডাইরেক্ট ফ্লাইটে ১,৫০,০০০ টাকা, স্টার মানের হোটেল ও পূর্ণ যিয়ারাহ সহ।",
     ),
     highlights: [
-      t("Direct & connecting flight options", "সরাসরি ও কানেক্টিং ফ্লাইট অপশন"),
-      t("Guided Umrah rituals", "পরিচালিত উমরাহ ইবাদত"),
+      t("Transit & direct flight options", "ট্রানজিট ও ডাইরেক্ট ফ্লাইট অপশন"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
       t("Ziyarah in Makkah & Madinah", "মক্কা ও মদিনায় যিয়ারাহ"),
     ],
     includes: [
       t("Round-trip air ticket", "রাউন্ড-ট্রিপ বিমান টিকিট"),
       t("Umrah visa processing", "উমরাহ ভিসা প্রসেসিং"),
-      t("3-star hotels (shared)", "৩-তারকা হোটেল (শেয়ার্ড)"),
-      t("Daily breakfast & dinner", "প্রতিদিন সকাল ও রাতের খাবার"),
-      t("Airport & ziyarah transport", "এয়ারপোর্ট ও যিয়ারাহ পরিবহন"),
+      t("Star-standard hotels (4–5 per room)", "স্টার মানের হোটেল (প্রতি রুমে ৪–৫ জন)"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
+      t("Ziyarah & bus transport in Saudi Arabia", "সৌদি আরবে যিয়ারাহ ও বাস পরিবহন"),
       t("Experienced group guide", "অভিজ্ঞ গ্রুপ গাইড"),
     ],
     excludes: [
@@ -77,45 +91,47 @@ export const packages: TravelPackage[] = [
     ],
     itinerary: [
       { day: "01", title: t("Departure & arrival in Jeddah", "জেদ্দায় যাত্রা ও আগমন"), detail: t("Reception at the airport and transfer to your Makkah hotel.", "এয়ারপোর্টে অভ্যর্থনা ও মক্কার হোটেলে স্থানান্তর।") },
-      { day: "02-06", title: t("Umrah & worship in Makkah", "মক্কায় উমরাহ ও ইবাদত"), detail: t("Perform Umrah with guidance and dedicate days to prayer at the Haram.", "দিকনির্দেশনায় উমরাহ পালন ও হারামে ইবাদতে সময় ব্যয়।") },
-      { day: "07-11", title: t("Madinah & Ziyarah", "মদিনা ও যিয়ারাহ"), detail: t("Travel to Madinah for prayers at Masjid an-Nabawi and historic ziyarah.", "মসজিদে নববীতে নামাজ ও ঐতিহাসিক যিয়ারাহর জন্য মদিনায় যাত্রা।") },
-      { day: "12", title: t("Return home", "ঘরে ফেরা"), detail: t("Transfer to the airport for your return flight.", "ফেরার ফ্লাইটের জন্য এয়ারপোর্টে স্থানান্তর।") },
+      { day: "02-08", title: t("Umrah & worship in Makkah", "মক্কায় উমরাহ ও ইবাদত"), detail: t("Perform Umrah with guidance and dedicate days to prayer at the Haram.", "দিকনির্দেশনায় উমরাহ পালন ও হারামে ইবাদতে সময় ব্যয়।") },
+      { day: "09-13", title: t("Madinah & Ziyarah", "মদিনা ও যিয়ারাহ"), detail: t("Travel to Madinah for prayers at Masjid an-Nabawi and historic ziyarah.", "মসজিদে নববীতে নামাজ ও ঐতিহাসিক যিয়ারাহর জন্য মদিনায় যাত্রা।") },
+      { day: "14", title: t("Return home", "ঘরে ফেরা"), detail: t("Transfer to the airport for your return flight.", "ফেরার ফ্লাইটের জন্য এয়ারপোর্টে স্থানান্তর।") },
     ],
   },
   {
     slug: "umrah-premium",
     category: "umrah",
-    name: t("Premium Umrah Package", "প্রিমিয়াম উমরাহ প্যাকেজ"),
+    name: t("Package B", "প্যাকেজ B"),
     tier: t("Most Popular", "সর্বাধিক জনপ্রিয়"),
     price: 185000,
     durationDays: 14,
-    nights: { makkah: 7, madinah: 6 },
-    hotelStars: 4,
+    nights: { makkah: 8, madinah: 5 },
+    hotelStars: 3,
     featured: true,
     highlight: true,
     specs: [
-      { key: "duration", icon: "clock", value: t("14/15 Days", "১৪/১৫ দিন") },
-      { key: "flight", icon: "plane", value: t("Saudia / Biman", "সৌদিয়া / বিমান") },
-      { key: "makkah", icon: "building", value: t("300/500M", "৩০০/৫০০ মি.") },
-      { key: "madinah", icon: "building", value: t("300/400M", "৩০০/৪০০ মি.") },
-      { key: "food", icon: "food", value: t("Breakfast, Lunch & Dinner", "সকাল, দুপুর ও রাতের খাবার") },
-      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+      { key: "duration", icon: "clock", value: t("14 Days", "১৪ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia / Biman / US-Bangla", "সৌদিয়া / বিমান / ইউএস-বাংলা") },
+      { key: "hotel", icon: "building", value: t("3-star hotels", "৩-স্টার হোটেল") },
+      { key: "distance", icon: "pin", value: t("~500m (4–5 min walk)", "প্রায় ৫০০ মিটার (৪–৫ মিনিট হাঁটা পথ)") },
+      { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },
+      { key: "food", icon: "food", value: t("3 meals daily", "দৈনিক ৩ বেলা") },
+      { key: "ziyarah", icon: "mosque", value: t("Sites in Makkah & Madinah", "মক্কা ও মদিনার দর্শনীয় স্থান") },
+      { key: "transport", icon: "bus", value: t("Bus service in Saudi Arabia", "সৌদি আরবে বাস সার্ভিস") },
     ],
     summary: t(
-      "Premium 4-star stays close to the Haram with attentive service and a relaxed pace of worship.",
-      "হারামের নিকটে ৪-তারকা আবাসন, যত্নশীল সেবা ও স্বাচ্ছন্দ্যে ইবাদতের সুযোগ।",
+      "A 14-day Umrah for BDT 1,85,000 (direct flight) with 3-star hotels about 500m from the Haram and 3 meals daily.",
+      "১৪ দিনের উমরাহ, ১,৮৫,০০০ টাকা (ডাইরেক্ট ফ্লাইট)—হারাম থেকে প্রায় ৫০০ মিটার দূরে ৩-স্টার হোটেল ও দৈনিক ৩ বেলা খাবার সহ।",
     ),
     highlights: [
-      t("Hotels within walking distance of the Haram", "হারাম থেকে হাঁটার দূরত্বে হোটেল"),
-      t("Smaller, well-managed groups", "ছোট ও সুপরিচালিত গ্রুপ"),
-      t("Premium ground transport", "প্রিমিয়াম গ্রাউন্ড ট্রান্সপোর্ট"),
+      t("Hotels ~500m from the Haram", "হারাম থেকে প্রায় ৫০০ মিটার দূরে হোটেল"),
+      t("Direct flight included", "ডাইরেক্ট ফ্লাইট অন্তর্ভুক্ত"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
     ],
     includes: [
       t("Round-trip air ticket", "রাউন্ড-ট্রিপ বিমান টিকিট"),
       t("Umrah visa processing", "উমরাহ ভিসা প্রসেসিং"),
-      t("4-star hotels near the Haram", "হারামের নিকটে ৪-তারকা হোটেল"),
-      t("Daily buffet meals", "প্রতিদিন বুফে খাবার"),
-      t("Private air-conditioned transport", "প্রাইভেট শীতাতপ পরিবহন"),
+      t("3-star hotels near the Haram (4–5 per room)", "হারামের নিকটে ৩-স্টার হোটেল (প্রতি রুমে ৪–৫ জন)"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
+      t("Ziyarah & bus transport in Saudi Arabia", "সৌদি আরবে যিয়ারাহ ও বাস পরিবহন"),
       t("Dedicated scholar-guide", "নিবেদিত আলেম-গাইড"),
     ],
     excludes: [
@@ -133,37 +149,39 @@ export const packages: TravelPackage[] = [
   {
     slug: "umrah-luxury",
     category: "umrah",
-    name: t("Luxury Umrah Package", "লাক্সারি উমরাহ প্যাকেজ"),
+    name: t("Special Package C", "স্পেশাল প্যাকেজ C"),
     tier: t("Signature", "সিগনেচার"),
-    price: 295000,
+    price: 285000,
     durationDays: 14,
-    nights: { makkah: 7, madinah: 6 },
+    nights: { makkah: 8, madinah: 5 },
     hotelStars: 5,
     featured: true,
     specs: [
-      { key: "duration", icon: "clock", value: t("14/15 Days", "১৪/১৫ দিন") },
-      { key: "flight", icon: "plane", value: t("Saudia (Business)", "সৌদিয়া (বিজনেস)") },
-      { key: "makkah", icon: "building", value: t("00/200M", "০০/২০০ মি.") },
-      { key: "madinah", icon: "building", value: t("100/200M", "১০০/২০০ মি.") },
-      { key: "food", icon: "food", value: t("Full-board Premium Dining", "ফুল-বোর্ড প্রিমিয়াম ডাইনিং") },
-      { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+      { key: "duration", icon: "clock", value: t("14 Days", "১৪ দিন") },
+      { key: "flight", icon: "plane", value: t("Saudia / Biman / US-Bangla", "সৌদিয়া / বিমান / ইউএস-বাংলা") },
+      { key: "hotel", icon: "building", value: t("Makkah 5-star · Madinah 3-star", "মক্কায় ৫-স্টার · মদিনায় ৩-স্টার") },
+      { key: "distance", icon: "pin", value: t("Makkah: adjacent (0 min) · Madinah: ~200m", "মক্কা: হারাম সংলগ্ন (০ মিনিট) · মদিনা: প্রায় ২০০ মিটার") },
+      { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },
+      { key: "food", icon: "food", value: t("3 meals daily", "দৈনিক ৩ বেলা") },
+      { key: "ziyarah", icon: "mosque", value: t("Sites in Makkah & Madinah", "মক্কা ও মদিনার দর্শনীয় স্থান") },
+      { key: "transport", icon: "bus", value: t("Bus service in Saudi Arabia", "সৌদি আরবে বাস সার্ভিস") },
     ],
     summary: t(
-      "Our signature 5-star experience with front-row proximity to the Haram and concierge-level care.",
-      "হারামের একদম নিকটবর্তী ৫-তারকা আবাসন ও কনসিয়ার্জ-পর্যায়ের যত্ন সহ আমাদের সিগনেচার অভিজ্ঞতা।",
+      "Our signature 14-day Umrah for BDT 2,85,000 (direct flight) — a 5-star hotel adjacent to the Haram in Makkah and 3-star near Masjid an-Nabawi in Madinah.",
+      "আমাদের সিগনেচার ১৪ দিনের উমরাহ, ২,৮৫,০০০ টাকা (ডাইরেক্ট ফ্লাইট)—মক্কায় হারাম সংলগ্ন ৫-স্টার হোটেল ও মদিনায় মসজিদে নববীর নিকটে ৩-স্টার হোটেল সহ।",
     ),
     highlights: [
-      t("5-star Haram-view hotels", "হারাম-ভিউ ৫-তারকা হোটেল"),
-      t("Private guide & concierge", "প্রাইভেট গাইড ও কনসিয়ার্জ"),
-      t("Premium dining", "প্রিমিয়াম ডাইনিং"),
+      t("Makkah 5-star adjacent to the Haram", "মক্কায় হারাম সংলগ্ন ৫-স্টার হোটেল"),
+      t("Madinah 3-star ~200m from the mosque", "মদিনায় মসজিদ থেকে প্রায় ২০০ মিটারে ৩-স্টার"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
     ],
     includes: [
-      t("Premium-class air ticket", "প্রিমিয়াম-ক্লাস বিমান টিকিট"),
-      t("Fast-track visa processing", "ফাস্ট-ট্র্যাক ভিসা প্রসেসিং"),
-      t("5-star Haram-view hotels", "হারাম-ভিউ ৫-তারকা হোটেল"),
-      t("Full-board premium dining", "ফুল-বোর্ড প্রিমিয়াম ডাইনিং"),
-      t("Private luxury transport", "প্রাইভেট লাক্সারি ট্রান্সপোর্ট"),
-      t("Personal scholar & concierge", "ব্যক্তিগত আলেম ও কনসিয়ার্জ"),
+      t("Round-trip air ticket (direct flight)", "রাউন্ড-ট্রিপ বিমান টিকিট (ডাইরেক্ট ফ্লাইট)"),
+      t("Umrah visa processing", "উমরাহ ভিসা প্রসেসিং"),
+      t("Makkah 5-star & Madinah 3-star (4–5 per room)", "মক্কায় ৫-স্টার ও মদিনায় ৩-স্টার (প্রতি রুমে ৪–৫ জন)"),
+      t("3 meals daily", "দৈনিক ৩ বেলা খাবার"),
+      t("Ziyarah & bus transport in Saudi Arabia", "সৌদি আরবে যিয়ারাহ ও বাস পরিবহন"),
+      t("Experienced group guide", "অভিজ্ঞ গ্রুপ গাইড"),
     ],
     excludes: [
       t("Personal shopping", "ব্যক্তিগত কেনাকাটা"),
