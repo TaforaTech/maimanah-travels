@@ -119,6 +119,44 @@ export function Header({
           <ButtonLink href={localePath("/contact", locale)} size="sm" className="hidden sm:inline-flex">
             {dict.common.bookNow}
           </ButtonLink>
+
+          {/* Profile → Login dropdown (expands on hover) */}
+          <div className="group relative hidden sm:block">
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-label={dict.common.login}
+              className="inline-flex items-center gap-2 rounded-full border border-line px-2.5 py-2 text-sm font-medium text-navy-800 transition-colors hover:border-gold-300 hover:bg-navy-50 hover:text-navy-900"
+            >
+              <Icon name="user" className="h-5 w-5" />
+              <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-200 group-hover:max-w-[6rem] group-hover:opacity-100">
+                {dict.common.login}
+              </span>
+            </button>
+            <div className="invisible absolute right-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <ul className="w-48 overflow-hidden rounded-2xl border border-line bg-white p-2 shadow-luxury">
+                <li>
+                  <Link
+                    href={localePath("/login/agent", locale)}
+                    className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm text-navy-700 transition-colors hover:bg-navy-50 hover:text-navy-900"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden />
+                    {dict.common.agent}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={localePath("/login/pilgrim", locale)}
+                    className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm text-navy-700 transition-colors hover:bg-navy-50 hover:text-navy-900"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden />
+                    {dict.common.pilgrim}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <button
             type="button"
             className="grid h-10 w-10 place-items-center rounded-full text-navy-900 hover:bg-navy-50 lg:hidden"

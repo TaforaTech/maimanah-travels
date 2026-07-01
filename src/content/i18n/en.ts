@@ -56,6 +56,9 @@ export const en = {
     close: "Close",
     home: "Home",
     backToTop: "Back to top",
+    login: "Login",
+    agent: "Agent",
+    pilgrim: "Traveler",
   },
 
   home: {

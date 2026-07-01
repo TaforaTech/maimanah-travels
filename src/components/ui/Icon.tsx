@@ -24,7 +24,8 @@ export type IconName =
   | "facebook"
   | "instagram"
   | "youtube"
-  | "whatsapp";
+  | "whatsapp"
+  | "user";
 
 const paths: Record<IconName, React.ReactNode> = {
   kaaba: (
@@ -144,6 +145,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M4 20l1.4-4A8 8 0 1 1 9 19.5L4 20Z" />
       <path d="M9 9c0 3 2 5 5 5 .6 0 1-.6 1-1l-1.5-1-1 .8c-1-.4-1.8-1.2-2.2-2.2l.8-1L10 8c0-.6-.4-1-1-1s-1 1-1 2Z" fill="currentColor" stroke="none" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" />
     </>
   ),
 };

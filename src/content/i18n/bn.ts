@@ -58,6 +58,9 @@ export const bn: Dictionary = {
     close: "বন্ধ করুন",
     home: "হোম",
     backToTop: "উপরে ফিরুন",
+    login: "লগইন",
+    agent: "এজেন্ট",
+    pilgrim: "যাত্রী লগইন",
   },
 
   home: {
