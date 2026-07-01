@@ -9,6 +9,7 @@ export type PackageSpec = {
   key:
     | "duration"
     | "flight"
+    | "transitFlight"
     | "aziziyah"
     | "makkah"
     | "madinah"
@@ -63,6 +64,7 @@ export const packages: TravelPackage[] = [
     specs: [
       { key: "duration", icon: "clock", value: t("14 Days", "১৪ দিন") },
       { key: "flight", icon: "plane", value: t("Saudia / Biman Bangladesh", "সৌদিয়া / বিমান বাংলাদেশ") },
+      { key: "transitFlight", icon: "plane", value: t("Qatar / Emirates / Air Arabia", "কাতার / এমিরেটস / এয়ার আরাবিয়া") },
       { key: "hotel", icon: "building", value: t("Star-standard hotels", "স্টার মানের হোটেল") },
       { key: "distance", icon: "pin", value: t("~1,000m (10–12 min walk)", "প্রায় ১,০০০ মিটার (১০–১২ মিনিট হাঁটা পথ)") },
       { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },

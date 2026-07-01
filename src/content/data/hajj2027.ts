@@ -7,6 +7,7 @@ export type Hajj2027Spec = {
   key:
     | "duration"
     | "flight"
+    | "transitFlight"
     | "aziziyah"
     | "makkah"
     | "madinah"
@@ -46,6 +47,7 @@ export const hajj2027Copy = {
   rowLabels: {
     duration: t("Duration", "সময়কাল"),
     flight: t("Direct Flight", "সরাসরি ফ্লাইট"),
+    transitFlight: t("Transit Flight", "ট্রানজিট ফ্লাইট"),
     aziziyah: t("Hotel Aziziyah", "হোটেল আজিজিয়া"),
     makkah: t("Hotel Makkah", "হোটেল মক্কা"),
     madinah: t("Hotel Madinah", "হোটেল মদিনা"),
