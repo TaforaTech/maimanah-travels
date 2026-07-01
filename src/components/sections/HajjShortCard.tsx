@@ -34,7 +34,6 @@ export function HajjShortCard({
         <span className="text-xs font-semibold uppercase tracking-wider text-muted">BDT</span>
         <div className="flex items-end gap-2">
           <span className="text-4xl font-bold leading-none text-navy-900">{groupBDT(pkg.price)}</span>
-          <span className="pb-1 text-xs text-muted">{c.startsFrom[locale]}</span>
         </div>
       </div>
 

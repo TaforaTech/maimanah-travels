@@ -29,6 +29,8 @@ export type TravelPackage = {
   name: LocalizedText;
   tier: LocalizedText;
   price: number; // BDT
+  /** Optional note under the price, e.g. flight-option pricing. */
+  priceNote?: LocalizedText;
   durationDays: number;
   nights: { makkah: number; madinah: number };
   hotelStars: number;
@@ -53,6 +55,7 @@ export const packages: TravelPackage[] = [
     name: t("Package A", "প্যাকেজ A"),
     tier: t("Value", "সাশ্রয়ী"),
     price: 130000,
+    priceNote: t("Direct flight BDT 1,50,000 · Transit flight BDT 1,30,000", "ডাইরেক্ট ফ্লাইট ১,৫০,০০০ টাকা · ট্রানজিট ফ্লাইট ১,৩০,০০০ টাকা"),
     durationDays: 14,
     nights: { makkah: 8, madinah: 5 },
     hotelStars: 3,

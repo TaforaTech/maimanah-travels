@@ -39,6 +39,17 @@ export const contentPages: Record<string, ContentPage> = {
         ],
       },
       {
+        heading: t(
+          "Documents required for Hajj registration",
+          "হজ্জ নিবন্ধনের জন্য প্রয়োজনীয় কাগজপত্র",
+        ),
+        list: [
+          t("Copy of National ID card (NID)", "জাতীয় পরিচয়পত্রের (এনআইডি) কপি"),
+          t("Registration fee: 10,000 Taka", "নিবন্ধন ফি: ১০,০০০ টাকা"),
+          t("Mobile number", "মোবাইল নম্বর"),
+        ],
+      },
+      {
         heading: t("How we help", "আমরা যেভাবে সাহায্য করি"),
         body: [
           t(

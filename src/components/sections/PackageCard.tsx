@@ -66,10 +66,12 @@ export function PackageCard({
           <span className={cn("text-4xl font-bold leading-none", featured ? "text-gold-400" : "text-navy-900")}>
             {groupBDT(pkg.price)}
           </span>
-          <span className={cn("pb-1 text-xs", featured ? "text-navy-100" : "text-muted")}>
-            {c.startsFrom[locale]}
-          </span>
         </div>
+        {pkg.priceNote && (
+          <p className={cn("mt-2 text-xs", featured ? "text-navy-100" : "text-muted")}>
+            {pkg.priceNote[locale]}
+          </p>
+        )}
       </div>
 
       {/* Specs */}
