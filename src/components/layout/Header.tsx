@@ -228,6 +228,34 @@ export function Header({
               );
             })}
           </ul>
+
+          {/* Login options (the desktop profile dropdown is hidden on phones) */}
+          <div className="mt-6 border-t border-line pt-6">
+            <p className="px-4 text-xs font-semibold uppercase tracking-wider text-muted">
+              {dict.common.login}
+            </p>
+            <ul className="mt-2 space-y-1">
+              <li>
+                <Link
+                  href={localePath("/login/agent", locale)}
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-navy-900 hover:bg-navy-50"
+                >
+                  <Icon name="building" className="h-5 w-5 text-gold-600" />
+                  {dict.common.agent}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={localePath("/login/pilgrim", locale)}
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-navy-900 hover:bg-navy-50"
+                >
+                  <Icon name="user" className="h-5 w-5 text-gold-600" />
+                  {dict.common.pilgrim}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           <div className="mt-6 flex items-center justify-between gap-3">
             <LanguageSwitcher current={locale} />
             <ButtonLink href={localePath("/contact", locale)} size="sm">

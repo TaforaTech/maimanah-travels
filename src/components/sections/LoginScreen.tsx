@@ -50,7 +50,7 @@ export function LoginScreen({
         />
         <div className="pattern-arabesque absolute inset-0 opacity-40" aria-hidden />
 
-        <div className="relative flex h-full flex-col justify-between p-12">
+        <div className="relative flex h-full flex-col justify-between p-8 xl:p-12">
           <Link href={localePath("/", locale)} aria-label={dict.common.home}>
             <Logo variant="light" className="h-11" />
           </Link>
@@ -60,7 +60,7 @@ export function LoginScreen({
               <Icon name="plane" className="h-4 w-4 text-gold-400" />
               {site.tagline}
             </span>
-            <h2 className="mt-6 font-display text-4xl leading-tight text-white">
+            <h2 className="mt-6 font-display text-3xl leading-tight text-white xl:text-4xl">
               {t.brandTagline}
             </h2>
             <dl className="mt-10 grid grid-cols-3 gap-6">
@@ -81,17 +81,36 @@ export function LoginScreen({
       </aside>
 
       {/* ── Right: login form ── */}
-      <main className="flex flex-col justify-center px-6 py-12 sm:px-10 lg:px-16">
-        <div className="mx-auto w-full max-w-md">
-          {/* Mobile logo (hidden once the photo panel shows) */}
-          <Link
-            href={localePath("/", locale)}
-            aria-label={dict.common.home}
-            className="mb-10 inline-block lg:hidden"
-          >
-            <Logo className="h-11" />
-          </Link>
+      <main className="flex flex-col lg:justify-center">
+        {/* Phone + tablet banner — brings the airplane imagery to smaller screens
+            where the side panel is hidden. */}
+        <div className="relative h-40 overflow-hidden sm:h-52 lg:hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 mix-blend-multiply"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(15,76,58,0.85) 0%, rgba(6,36,27,0.7) 100%)",
+            }}
+            aria-hidden
+          />
+          <div className="pattern-arabesque absolute inset-0 opacity-40" aria-hidden />
+          <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
+            <Link href={localePath("/", locale)} aria-label={dict.common.home}>
+              <Logo variant="light" className="h-10" />
+            </Link>
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-cream-50 backdrop-blur-sm">
+              <Icon name="plane" className="h-3.5 w-3.5 text-gold-400" />
+              {site.tagline}
+            </span>
+          </div>
+        </div>
 
+        <div className="mx-auto w-full max-w-md px-6 py-10 sm:px-10 sm:py-12 lg:px-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-navy-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-700">
             <Icon name={isAgent ? "building" : "user"} className="h-3.5 w-3.5" />
             {isAgent ? dict.common.agent : dict.common.pilgrim}
