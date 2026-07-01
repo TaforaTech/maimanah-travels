@@ -1,13 +1,16 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /*
   Maimanah Travels — centralized design system
   Palette: Emerald Green (trust, serenity, Islamic heritage) + Luxury Gold (premium, hospitality)
-  All colors/tokens defined once here and consumed via Tailwind utilities.
+  Palette/token values also live in tailwind.config.ts (for utility generation).
+  These CSS variables mirror them for the hand-written gradient/pattern classes below.
   The `navy-*` scale carries the green family so existing utilities keep working.
 */
 
-@theme {
+:root {
   /* Green (Primary #0F4C3A · Secondary #16624F) */
   --color-navy-950: #06241b;
   --color-navy-900: #0f4c3a;
@@ -26,15 +29,10 @@
   --color-gold-300: #f0d690;
   --color-gold-100: #faf0d6;
 
-  /* WhatsApp (brand-recognizable green — special case) */
-  --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #1ebe5d;
-
-  /* Neutrals (Background #FAFAF8 · Text #1A1A1A / #FFFFFF) */
+  /* Neutrals */
   --color-cream-50: #fafaf8;
   --color-cream-100: #f2f2ed;
   --color-ink: #1a1a1a;
-  --color-muted: #5b5b57;
   --color-line: #e6e3db;
 
   /* Fonts (bound to next/font CSS variables) */
@@ -43,32 +41,26 @@
   --font-bangla: var(--font-bangla), var(--font-inter), sans-serif;
   --font-arabic: var(--font-arabic), "Traditional Arabic", "Scheherazade New", serif;
 
-  /* Radius & shadow */
-  --radius-xl2: 1.5rem;
-  --shadow-luxury: 0 18px 50px -12px rgba(15, 76, 58, 0.25);
-  --shadow-soft: 0 8px 30px -10px rgba(15, 76, 58, 0.15);
-
-  /* Layout */
-  --spacing-section: 5.5rem;
-}
-
-:root {
   --background: #fafaf8;
   --foreground: var(--color-ink);
 }
 
 /* Premium green gradient for secondary buttons — lighter at rest, darker on hover.
-   Defined as @utility so variants (hover:) are generated in Tailwind v4. */
-@utility bg-green-gradient {
-  background: linear-gradient(110deg, var(--color-navy-700) 0%, var(--color-navy-900) 100%);
-}
+   Registered in @layer utilities so hover:/focus: variants are generated. */
+@layer utilities {
+  .bg-green-gradient {
+    background: linear-gradient(110deg, var(--color-navy-700) 0%, var(--color-navy-900) 100%);
+  }
 
-@utility bg-green-gradient-dark {
-  background: linear-gradient(110deg, var(--color-navy-900) 0%, var(--color-navy-950) 100%);
+  .bg-green-gradient-dark {
+    background: linear-gradient(110deg, var(--color-navy-900) 0%, var(--color-navy-950) 100%);
+  }
 }
 
 @layer base {
-  * {
+  *,
+  ::before,
+  ::after {
     border-color: var(--color-line);
   }
 
