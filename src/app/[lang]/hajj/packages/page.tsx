@@ -4,7 +4,6 @@ import { buildMetadata, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { resolveLocale } from "@/lib/page-helpers";
 import { PageHero } from "@/components/sections/PageHero";
 import { Hajj2027Packages } from "@/components/sections/Hajj2027Packages";
-import { HajjShortPackages } from "@/components/sections/HajjShortPackages";
 import { CTASection } from "@/components/sections/CTASection";
 import { Section } from "@/components/ui/Section";
 import { hajj2027Copy } from "@/content/data/hajj2027";
@@ -35,9 +34,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       />
       <Section tone="cream">
         <Hajj2027Packages locale={locale} showHeading={false} />
-      </Section>
-      <Section tone="light">
-        <HajjShortPackages locale={locale} />
       </Section>
       <Section tone="cream" className="pb-24 pt-0">
         <CTASection

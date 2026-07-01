@@ -4,7 +4,19 @@ import type { IconName } from "@/components/ui/Icon";
 const t = (en: string, bn: string): LocalizedText => ({ en, bn });
 
 export type Hajj2027Spec = {
-  key: "duration" | "flight" | "aziziyah" | "makkah" | "madinah" | "food" | "services";
+  key:
+    | "duration"
+    | "flight"
+    | "aziziyah"
+    | "makkah"
+    | "madinah"
+    | "hotel"
+    | "distance"
+    | "room"
+    | "food"
+    | "ziyarah"
+    | "transport"
+    | "services";
   icon: IconName;
   value: LocalizedText;
 };
@@ -37,22 +49,28 @@ export const hajj2027Copy = {
     aziziyah: t("Hotel Aziziyah", "হোটেল আজিজিয়া"),
     makkah: t("Hotel Makkah", "হোটেল মক্কা"),
     madinah: t("Hotel Madinah", "হোটেল মদিনা"),
+    hotel: t("Hotel", "হোটেল"),
+    distance: t("Distance from Haram", "হারাম থেকে দূরত্ব"),
+    room: t("Room Sharing", "রুম শেয়ারিং"),
     food: t("Food", "খাবার"),
+    ziyarah: t("Ziyarah", "যিয়ারাহ"),
+    transport: t("Transportation", "পরিবহন"),
     services: t("Special Services", "বিশেষ সেবা"),
   } as Record<Hajj2027Spec["key"], LocalizedText>,
 };
 
-const specs = (
-  makkah: [string, string],
-  madinah: [string, string],
-): Hajj2027Spec[] => [
-  { key: "duration", icon: "clock", value: t("40/42 Days", "৪০/৪২ দিন") },
-  { key: "flight", icon: "plane", value: t("SA / Biman / Flynas", "এসএ / বিমান / ফ্লাইনাস") },
-  { key: "aziziyah", icon: "bed", value: t("Near to Jamarat", "জামারাতের নিকটে") },
-  { key: "makkah", icon: "building", value: t(makkah[0], makkah[1]) },
-  { key: "madinah", icon: "building", value: t(madinah[0], madinah[1]) },
-  { key: "food", icon: "food", value: t("Breakfast, Lunch & Dinner", "সকাল, দুপুর ও রাতের খাবার") },
-  { key: "services", icon: "bus", value: t("Ziyarah Tour, Transportation & Guide", "যিয়ারাহ ট্যুর, পরিবহন ও গাইড") },
+const fullSpecs = (o: {
+  hotel: LocalizedText;
+  distance: LocalizedText;
+}): Hajj2027Spec[] => [
+  { key: "duration", icon: "clock", value: t("35–40 Days", "৩৫–৪০ দিন") },
+  { key: "flight", icon: "plane", value: t("Saudia / Biman Bangladesh", "সৌদিয়া / বিমান বাংলাদেশ") },
+  { key: "hotel", icon: "building", value: o.hotel },
+  { key: "distance", icon: "pin", value: o.distance },
+  { key: "room", icon: "bed", value: t("4–5 per room", "প্রতি রুমে ৪–৫ জন") },
+  { key: "food", icon: "food", value: t("3 meals daily", "দৈনিক ৩ বেলা") },
+  { key: "ziyarah", icon: "mosque", value: t("Sites in Makkah & Madinah", "মক্কা ও মদিনার দর্শনীয় স্থান") },
+  { key: "transport", icon: "bus", value: t("Bus service in Saudi Arabia", "সৌদি আরবে বাস সার্ভিস") },
 ];
 
 /** Static, localized labels for the Hajj 2027 short-package listing. */
@@ -169,8 +187,11 @@ export const hajj2027Packages: Hajj2027Package[] = [
       "Experience a fulfilling Hajj 2027 with our standard package, thoughtfully arranged to fit your budget.",
       "আপনার বাজেটের কথা ভেবে সাজানো আমাদের স্ট্যান্ডার্ড প্যাকেজে উপভোগ করুন এক পরিপূর্ণ হজ্জ ২০২৭।",
     ),
-    price: 755000,
-    specs: specs(["300/600M", "৩০০/৬০০ মি."], ["300/400M", "৩০০/৪০০ মি."]),
+    price: 550000,
+    specs: fullSpecs({
+      hotel: t("Star-rated", "স্টার মানের"),
+      distance: t("~1,500m (18–20 min walk)", "প্রায় ১,৫০০ মি. (১৮–২০ মিনিট হাঁটা পথ)"),
+    }),
   },
   {
     slug: "classic",
@@ -179,9 +200,12 @@ export const hajj2027Packages: Hajj2027Package[] = [
       "Our Classic Hajj 2027 blends essential comfort with spiritual excellence for a balanced journey.",
       "আমাদের ক্লাসিক হজ্জ ২০২৭ ভারসাম্যপূর্ণ সফরের জন্য আবশ্যিক আরাম ও আত্মিক উৎকর্ষকে একত্র করে।",
     ),
-    price: 890000,
+    price: 680000,
     featured: true,
-    specs: specs(["300/600M", "৩০০/৬০০ মি."], ["300/400M", "৩০০/৪০০ মি."]),
+    specs: fullSpecs({
+      hotel: t("Star-rated", "স্টার মানের"),
+      distance: t("~1,000m (8–10 min walk)", "প্রায় ১,০০০ মি. (৮–১০ মিনিট হাঁটা পথ)"),
+    }),
   },
   {
     slug: "premium",
@@ -190,7 +214,10 @@ export const hajj2027Packages: Hajj2027Package[] = [
       "Elevated Hajj 2027 with premium comfort and the closest hotels for a serene spiritual journey.",
       "প্রিমিয়াম আরাম ও সবচেয়ে কাছের হোটেল সহ এক প্রশান্ত আত্মিক সফরের জন্য উন্নত হজ্জ ২০২৭।",
     ),
-    price: 1085000,
-    specs: specs(["100/200M", "১০০/২০০ মি."], ["200/300M", "২০০/৩০০ মি."]),
+    price: 980000,
+    specs: fullSpecs({
+      hotel: t("Makkah 5-star, Madinah 3-star", "মক্কা ৫-স্টার, মদিনা ৩-স্টার"),
+      distance: t("Makkah 0m (adjacent), Madinah ~200m", "মক্কা ০ মি. (হারাম সংলগ্ন), মদিনা প্রায় ২০০ মি."),
+    }),
   },
 ];
