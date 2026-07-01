@@ -95,6 +95,11 @@ export function PackageCard({
         {dict.common.viewDetails}
         <Icon name="arrow" className="h-4 w-4" />
       </ButtonLink>
+      {pkg.category === "umrah" && (
+        <p className={cn("mt-3 text-center text-[0.7rem]", featured ? "text-navy-100" : "text-muted")}>
+          {c.terms[locale]}
+        </p>
+      )}
     </div>
   );
 }
